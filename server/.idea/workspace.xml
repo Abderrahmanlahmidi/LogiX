@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="97d7aa10-ac83-461f-b4e8-65ac04fdb610" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/middlewares/auth.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/generic/generic.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/generic/generic.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/Authenticated.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/error.handler.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/maintenance-rule.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/maintenance-rule.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/maintenance.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/maintenance.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/notification.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/notification.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/role.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/role.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/tire.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/tire.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/trip.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/trip.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/user.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/vehicle.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/vehicle.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/generic/generic.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/generic/generic.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/maintenance-rule.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/maintenance-rule.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/maintenance.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/maintenance.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/notification.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/notification.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/role.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/role.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/settings/setup.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/settings/setup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tire.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/tire.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/trip.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/trip.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/user.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/user.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/vehicle.service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/vehicle.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/vehicle.test.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Abderrahmanlahmidi"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Abderrahmanlahmidi/LogiX.git",
+    "accountId": "c396f7d8-a381-4085-b4cb-b4f872fe0cc4"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="36eZoyskqysy4zMkkAmFXnV6mlh" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "git-widget-placeholder": "server/services__controllers__routes__tests",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Youcode\Desktop\LogiX\server\routes\routers" />
+      <recent name="C:\Users\Youcode\Desktop\LogiX\server\tests\intergration" />
+      <recent name="C:\Users\Youcode\Desktop\LogiX\server\tests\settings" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-WS-252.26830.93" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="97d7aa10-ac83-461f-b4e8-65ac04fdb610" name="Changes" comment="" />
+      <created>1765369176478</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1765369176478</updated>
+      <workItem from="1765369179246" duration="4732000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -1,9 +1,9 @@
 import { expect } from "chai";
 import request from "supertest";
-import app from "./settings/app.js";
-import User from "../models/User.js";
-import Role from "../models/Role.js";
-import { setupDB } from "./settings/setup.js";
+import app from "../settings/app.js";
+import User from "../../models/User.js";
+import Role from "../../models/Role.js";
+import { setupDB } from "../settings/setup.js";
 
 describe("User Routes", () => {
   let id;

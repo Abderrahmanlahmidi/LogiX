@@ -1,17 +1,19 @@
 import { expect } from "chai";
 import request from "supertest";
-import app from "./settings/app.js";
-import Model from "../models/index.js";
-import { setupDB } from "./settings/setup.js";
+import app from "../settings/app.js";
+import Model from "../../models/index.js";
+import { setupDB, generateToken } from "../settings/setup.js";
 
 describe("Trip Routes", () => {
   let tripId;
   let driverId;
   let vehicleId;
+  let token;
 
   setupDB();
 
   before(async () => {
+    token = generateToken();
     const driverData = {
       firstName: "John",
       lastName: "Doe",
@@ -43,6 +45,7 @@ describe("Trip Routes", () => {
   it("POST /create-trip → should create a new trip", async () => {
     const res = await request(app)
       .post("/api/create-trip")
+      .set("Authorization", `Bearer ${token}`)
       .send({
         driverId: driverId,
         vehicleId: vehicleId,
@@ -58,13 +61,16 @@ describe("Trip Routes", () => {
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("create successfully");
 
-    const trip = await Model.Trip.findOne({ startLocation: "Paris" });
-    expect(trip).to.exist;
-    tripId = trip._id.toString();
+    // Use response data
+    expect(res.body.data).to.exist;
+    expect(res.body.data.startLocation).to.equal("Paris");
+    tripId = res.body.data._id;
   });
 
   it("GET /trips → should get all trips", async () => {
-    const res = await request(app).get("/api/trips");
+    const res = await request(app)
+      .get("/api/trips")
+      .set("Authorization", `Bearer ${token}`);
 
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("success");
@@ -72,8 +78,9 @@ describe("Trip Routes", () => {
   });
 
   it("GET /trip/:id → should get trip by id", async () => {
-    const res = await request(app).get(`/api/trip/${tripId}`);
-
+    const res = await request(app)
+      .get(`/api/trip/${tripId}`)
+      .set("Authorization", `Bearer ${token}`);
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("success");
     expect(res.body.data).to.exist;
@@ -81,20 +88,22 @@ describe("Trip Routes", () => {
   });
 
   it("PUT /update-trip/:id → should update trip", async () => {
-    const res = await request(app).put(`/api/update-trip/${tripId}`).send({
-      status: "active",
-      fuelLiters: 250,
-    });
-
+    const res = await request(app)
+      .put(`/api/update-trip/${tripId}`)
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        status: "active",
+        fuelLiters: 250,
+      });
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("updated successfully");
-
-    const updated = await Model.Trip.findById(tripId);
-    expect(updated.status).to.equal("active");
+    expect(res.body.data).to.exist;
+    expect(res.body.data.status).to.equal("active");
+    expect(res.body.data.fuelLiters).to.equal(250);
   });
 
   it("DELETE /delete-trip/:id → should delete trip", async () => {
-    
+    // Create and delete a trip
     const tripToDelete = await Model.Trip.create({
       driverId: driverId,
       vehicleId: vehicleId,
@@ -102,15 +111,16 @@ describe("Trip Routes", () => {
       endLocation: "Paris",
       status: "pending",
     });
-
-    const res = await request(app).delete(
-      `/api/delete-trip/${tripToDelete._id}`
-    );
-
+    const idToDelete = tripToDelete._id.toString();
+    const res = await request(app)
+      .delete(`/api/delete-trip/${idToDelete}`)
+      .set("Authorization", `Bearer ${token}`);
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("delete successfully");
-
-    const deleted = await Model.Trip.findById(tripToDelete._id);
+    expect(res.body.data).to.exist;
+    expect(res.body.data._id).to.equal(idToDelete);
+    // Confirm trip is deleted from DB
+    const deleted = await Model.Trip.findById(idToDelete);
     expect(deleted).to.be.null;
   });
 });

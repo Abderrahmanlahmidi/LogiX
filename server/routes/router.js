@@ -1,11 +1,11 @@
-import userRouter from "./user.router.js";
-import roleRouter from "./role.router.js";
-import vehicleRouter from "./vehicle.router.js";
-import tripRouter from "./trip.router.js";
-import tireRouter from "./tire.router.js";
-import maintenanceRouter from "./maintenance.router.js";
-import maintenanceRuleRouter from "./maintenance-rule.router.js";
-import notificationRouter from "./notification.router.js";
+import userRouter from "./routers/user.router.js";
+import roleRouter from "./routers/role.router.js";
+import vehicleRouter from "./routers/vehicle.router.js";
+import tripRouter from "./routers/trip.router.js";
+import tireRouter from "./routers/tire.router.js";
+import maintenanceRouter from "./routers/maintenance.router.js";
+import maintenanceRuleRouter from "./routers/maintenance-rule.router.js";
+import notificationRouter from "./routers/notification.router.js";
 
 const path = "/api";
 

@@ -1,24 +1,24 @@
 import { expect } from "chai";
 import request from "supertest";
-import app from "./settings/app.js";
-import Model from "../models/index.js";
-import { setupDB } from "./settings/setup.js";
+import app from "../settings/app.js";
+import Model from "../../models/index.js";
+import { setupDB, generateToken } from "../settings/setup.js";
 
 describe("Maintenance Routes", () => {
   let maintenanceId;
   let maintenanceRuleId;
   let vehicleId;
+  let token;
 
   setupDB();
 
   before(async () => {
-
+    token = generateToken();
     const rule = await Model.MaintenanceRule.create({
       type: "oil",
       recommendedKm: 10000,
     });
     maintenanceRuleId = rule._id.toString();
-
 
     const vehicle = await Model.Vehicle.create({
       plateNumber: 555003,
@@ -32,15 +32,18 @@ describe("Maintenance Routes", () => {
   });
 
   it("POST /create-maintenance → should create a new maintenance", async () => {
-    const res = await request(app).post("/api/create-maintenance").send({
-      maintenanceRuleId: maintenanceRuleId,
-      description: "Oil change and filter replacement",
-      cost: "150",
-      date: new Date(),
-      vehicleId: vehicleId,
-      kmAtMaintenance: 150000,
-      targetType: "truck",
-    });
+    const res = await request(app)
+      .post("/api/create-maintenance")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        maintenanceRuleId: maintenanceRuleId,
+        description: "Oil change and filter replacement",
+        cost: "150",
+        date: new Date(),
+        vehicleId: vehicleId,
+        kmAtMaintenance: 150000,
+        targetType: "truck",
+      });
 
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("create successfully");
@@ -53,7 +56,9 @@ describe("Maintenance Routes", () => {
   });
 
   it("GET /maintenances → should get all maintenances", async () => {
-    const res = await request(app).get("/api/maintenances");
+    const res = await request(app)
+      .get("/api/maintenances")
+      .set("Authorization", `Bearer ${token}`);
 
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("success");
@@ -61,7 +66,9 @@ describe("Maintenance Routes", () => {
   });
 
   it("GET /maintenance/:id → should get maintenance by id", async () => {
-    const res = await request(app).get(`/api/maintenance/${maintenanceId}`);
+    const res = await request(app)
+      .get(`/api/maintenance/${maintenanceId}`)
+      .set("Authorization", `Bearer ${token}`);
 
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("success");
@@ -74,6 +81,7 @@ describe("Maintenance Routes", () => {
   it("PUT /update-maintenance/:id → should update maintenance", async () => {
     const res = await request(app)
       .put(`/api/update-maintenance/${maintenanceId}`)
+      .set("Authorization", `Bearer ${token}`)
       .send({
         cost: "200",
       });
@@ -86,7 +94,6 @@ describe("Maintenance Routes", () => {
   });
 
   it("DELETE /delete-maintenance/:id → should delete maintenance", async () => {
-
     const maintToDelete = await Model.Maintenance.create({
       maintenanceRuleId: maintenanceRuleId,
       description: "Brake inspection",
@@ -96,9 +103,9 @@ describe("Maintenance Routes", () => {
       targetType: "truck",
     });
 
-    const res = await request(app).delete(
-      `/api/delete-maintenance/${maintToDelete._id}`
-    );
+    const res = await request(app)
+      .delete(`/api/delete-maintenance/${maintToDelete._id}`)
+      .set("Authorization", `Bearer ${token}`);
 
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("delete successfully");

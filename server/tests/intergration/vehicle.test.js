@@ -1,8 +1,8 @@
 import { expect } from "chai";
 import request from "supertest";
-import app from "./settings/app.js";
-import Model from "../models/index.js";
-import { setupDB } from "./settings/setup.js";
+import app from "../settings/app.js";
+import Model from "../../models/index.js";
+import { setupDB, generateToken } from "../settings/setup.js";
 
 describe("Vehicle Routes", () => {
   let fakeData = {
@@ -13,20 +13,33 @@ describe("Vehicle Routes", () => {
     status: "active",
     type: "truck",
   };
+  let token;
 
   setupDB();
 
-  it("GET /vehicles -> should by get all vehicles ", async () => {
-    await request(app).post("/api/create-vehicle").send(fakeData);
+  before(() => {
+    token = generateToken();
+  });
 
-    const res = await request(app).get("/api/vehicles");
+  it("GET /vehicles -> should by get all vehicles ", async () => {
+    await request(app)
+      .post("/api/create-vehicle")
+      .set("Authorization", `Bearer ${token}`)
+      .send(fakeData);
+
+    const res = await request(app)
+      .get("/api/vehicles")
+      .set("Authorization", `Bearer ${token}`);
 
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("success");
   });
 
   it("POST /create-vehicle → should create a new vehicle ", async () => {
-    const res = await request(app).post("/api/create-vehicle").send(fakeData);
+    const res = await request(app)
+      .post("/api/create-vehicle")
+      .set("Authorization", `Bearer ${token}`)
+      .send(fakeData);
 
     await Model.Vehicle.findOne({ currentKm: 240500 });
 
@@ -35,12 +48,17 @@ describe("Vehicle Routes", () => {
   });
 
   it("DELETE /delete-vehicle/:id -> should delete a vehicle", async () => {
-    await request(app).post("/api/create-vehicle").send(fakeData);
+    await request(app)
+      .post("/api/create-vehicle")
+      .set("Authorization", `Bearer ${token}`)
+      .send(fakeData);
 
     const vehicle = await Model.Vehicle.findOne({ currentKm: 240500 });
     const vehicleId = vehicle._id.toString();
 
-    const res = await request(app).delete(`/api/delete-vehicle/${vehicleId}`);
+    const res = await request(app)
+      .delete(`/api/delete-vehicle/${vehicleId}`)
+      .set("Authorization", `Bearer ${token}`);
 
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("delete successfully");
@@ -56,11 +74,16 @@ describe("Vehicle Routes", () => {
       type: "truck",
     };
 
-    await request(app).post("/api/create-vehicle").send(createData);
+    await request(app)
+      .post("/api/create-vehicle")
+      .set("Authorization", `Bearer ${token}`)
+      .send(createData);
     const vehicle = await Model.Vehicle.findOne({ currentKm: 100000 });
     const id = vehicle._id.toString();
 
-    const res = await request(app).get(`/api/vehicle/${id}`);
+    const res = await request(app)
+      .get(`/api/vehicle/${id}`)
+      .set("Authorization", `Bearer ${token}`);
 
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("success");
@@ -79,14 +102,20 @@ describe("Vehicle Routes", () => {
       type: "truck",
     };
 
-    await request(app).post("/api/create-vehicle").send(createData);
+    await request(app)
+      .post("/api/create-vehicle")
+      .set("Authorization", `Bearer ${token}`)
+      .send(createData);
     const vehicle = await Model.Vehicle.findOne({ plateNumber: 99999 });
     const id = vehicle._id.toString();
 
-    const res = await request(app).put(`/api/update-vehicle/${id}`).send({
-      brand: "Scania Updated",
-      currentKm: 50500,
-    });
+    const res = await request(app)
+      .put(`/api/update-vehicle/${id}`)
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        brand: "Scania Updated",
+        currentKm: 50500,
+      });
 
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("updated successfully");

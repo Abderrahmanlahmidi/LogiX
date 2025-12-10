@@ -1,16 +1,18 @@
 import { expect } from "chai";
 import request from "supertest";
-import app from "./settings/app.js";
-import Model from "../models/index.js";
-import { setupDB } from "./settings/setup.js";
+import app from "../settings/app.js";
+import Model from "../../models/index.js";
+import { setupDB, generateToken } from "../settings/setup.js";
 
 describe("Notification Routes", () => {
   let notificationId;
   let userId;
+  let token;
 
   setupDB();
 
   before(async () => {
+    token = generateToken();
     const role = await Model.Role.create({
       name: "Driver",
       description: "Driver role",
@@ -27,13 +29,16 @@ describe("Notification Routes", () => {
   });
 
   it("POST /create-notification → should create a new notification", async () => {
-    const res = await request(app).post("/api/create-notification").send({
-      userId: userId,
-      title: "Maintenance Alert",
-      description: "Your vehicle needs oil change",
-      isRead: false,
-      type: "warning",
-    });
+    const res = await request(app)
+      .post("/api/create-notification")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        userId: userId,
+        title: "Maintenance Alert",
+        description: "Your vehicle needs oil change",
+        isRead: false,
+        type: "warning",
+      });
 
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("create successfully");
@@ -46,7 +51,9 @@ describe("Notification Routes", () => {
   });
 
   it("GET /notifications → should get all notifications", async () => {
-    const res = await request(app).get("/api/notifications");
+    const res = await request(app)
+      .get("/api/notifications")
+      .set("Authorization", `Bearer ${token}`);
 
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("success");
@@ -54,7 +61,9 @@ describe("Notification Routes", () => {
   });
 
   it("GET /notification/:id → should get notification by id", async () => {
-    const res = await request(app).get(`/api/notification/${notificationId}`);
+    const res = await request(app)
+      .get(`/api/notification/${notificationId}`)
+      .set("Authorization", `Bearer ${token}`);
 
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("success");
@@ -65,6 +74,7 @@ describe("Notification Routes", () => {
   it("PUT /update-notification/:id → should update notification", async () => {
     const res = await request(app)
       .put(`/api/update-notification/${notificationId}`)
+      .set("Authorization", `Bearer ${token}`)
       .send({
         isRead: true,
       });
@@ -85,9 +95,9 @@ describe("Notification Routes", () => {
       type: "info",
     });
 
-    const res = await request(app).delete(
-      `/api/delete-notification/${notifToDelete._id}`
-    );
+    const res = await request(app)
+      .delete(`/api/delete-notification/${notifToDelete._id}`)
+      .set("Authorization", `Bearer ${token}`);
 
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("delete successfully");

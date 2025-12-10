@@ -24,7 +24,7 @@ export const GenericService = (Model) => ({
   },
 
   async update(id, data) {
-    return Model.findByIdAndUpdate(id, data);
+    return Model.findByIdAndUpdate(id, data, { new: true });
   },
 
   async delete(id) {
