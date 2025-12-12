@@ -1,5 +1,5 @@
 export const errorHandler = (err, req, res, next) => {
-    console.error("🔥 Error Middleware:", err);
+    console.error("Error Middleware:", err);
 
     const status = err.status || 500;
 

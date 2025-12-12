@@ -3,10 +3,11 @@ import request from "supertest";
 import app from "../settings/app.js";
 import User from "../../models/User.js";
 import Role from "../../models/Role.js";
-import { setupDB } from "../settings/setup.js";
+import { setupDB, generateToken } from "../settings/setup.js";
 
 describe("User Routes", () => {
   let id;
+  let token;
 
   setupDB();
 
@@ -28,6 +29,7 @@ describe("User Routes", () => {
 
     const user = await User.findOne({ email: "john@example.com" });
     id = user._id.toString();
+    token = generateToken(id);
   });
 
   it("POST /login → should login user", async () => {
@@ -39,11 +41,12 @@ describe("User Routes", () => {
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("user login successfully");
     expect(res.body.data).to.have.property("accessToken");
-    expect(res.body.data).to.have.property("refreshToken");
   });
 
   it("GET /user/:id → should get user by id", async () => {
-    const res = await request(app).get(`/api/user/${id}`);
+    const res = await request(app)
+      .get(`/api/user/${id}`)
+      .set("Authorization", `Bearer ${token}`);
 
     expect(res.status).to.equal(200);
     expect(res.body.status).to.equal("success");
@@ -54,6 +57,7 @@ describe("User Routes", () => {
   it("PUT /update-user/:id → should update user", async () => {
     const res = await request(app)
       .put(`/api/update-user/${id}`)
+      .set("Authorization", `Bearer ${token}`)
       .send({ firstName: "Johnny" });
 
     expect(res.status).to.equal(200);

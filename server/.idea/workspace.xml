@@ -5,30 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97d7aa10-ac83-461f-b4e8-65ac04fdb610" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/middlewares/auth.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/routes/router.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/routes/router.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/generic/generic.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/generic/generic.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/Authenticated.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/error.handler.middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/maintenance-rule.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/maintenance-rule.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/maintenance.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/maintenance.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/notification.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/notification.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/role.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/role.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/tire.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/tire.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/trip.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/trip.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/user.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/vehicle.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/vehicle.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/generic/generic.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/generic/generic.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/maintenance-rule.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/maintenance-rule.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/maintenance.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/maintenance.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/notification.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/notification.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/role.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/role.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/settings/setup.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/settings/setup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tire.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/tire.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/trip.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/trip.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/user.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/user.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/vehicle.service.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/vehicle.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/vehicle.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/error.handler.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/error.handler.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/routers/user.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/user.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/user.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/intergration/user.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/user.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,22 +39,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Abderrahmanlahmidi"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Abderrahmanlahmidi&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Abderrahmanlahmidi/LogiX.git",
-    "accountId": "c396f7d8-a381-4085-b4cb-b4f872fe0cc4"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Abderrahmanlahmidi/LogiX.git&quot;,
+    &quot;accountId&quot;: &quot;c396f7d8-a381-4085-b4cb-b4f872fe0cc4&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 4
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="36eZoyskqysy4zMkkAmFXnV6mlh" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -69,20 +63,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "git-widget-placeholder": "server/services__controllers__routes__tests",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;server/services__controllers__routes__tests&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Youcode&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mongo&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Youcode\Desktop\LogiX\server\routes\routers" />
@@ -104,7 +105,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1765369176478</updated>
-      <workItem from="1765369179246" duration="4732000" />
+      <workItem from="1765369179246" duration="6225000" />
+      <workItem from="1765563705168" duration="1771000" />
     </task>
     <servers />
   </component>
