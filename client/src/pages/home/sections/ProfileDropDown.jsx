@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
-import { userInfo } from "../../../services/apis/userProfile";
+import { userInfo } from "../../../services/apis/user";
 import { DisplayImages } from "../../../constants/DisplayImagesConstants";
 import { MenuItem } from "../../../constants/DropDownConstants";
 import { ConfirmPopup } from "../../../components/ui/confirmPopup/ConfirmPopup";

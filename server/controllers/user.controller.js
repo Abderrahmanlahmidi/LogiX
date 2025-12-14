@@ -15,15 +15,16 @@ export const register = async (req, res) => {
 };
 
 export const login = async (req, res) => {
+
   try {
     const result = await AuthService.login(req.body);
 
-    await res.cookie("refreshToken", result.refreshToken, {
-      httpOnly: true,
-      secure: false,
-      sameSite: "Lax",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+      res.cookie("refreshToken", refreshToken, {
+          httpOnly: true,
+          secure: false,
+          sameSite: "Lax",
+          maxAge: 7 * 24 * 60 * 60 * 1000,
+      });
 
     return res.status(200).json({
       status: "user login successfully",
@@ -67,31 +68,34 @@ export const updateProfile = async (req, res) => {
 
 export const logout = (req, res) => {
 
-  res.clearCookie("refreshToken", {
-      httpOnly: true,
-      secure: true,
-      sameSite: "None",
-  });
+    res.clearCookie("refreshToken", {
+        httpOnly: true,
+        secure: false,
+        sameSite: "lax",
+    });
+
 
   return res.status(200).json({ message: "Logout successful" });
 };
 
 export const refreshToken = (req, res) => {
-    try {
-        const token = req.cookies.refreshToken;
-        if (!token) return res.status(401).json({ message: "No refresh token" });
+    const refreshToken = req.cookies.refreshToken;
 
-        const payload = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
-        const newAccessToken = jwt.sign(
-            { id: payload.id, role: payload.role },
-            process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: "10s" }
+    console.log("Cookies:", req.cookies);
+
+    if (!refreshToken) return res.status(401).json({ message: "No refresh token" });
+
+    jwt.verify(refreshToken, process.env.REFRESH_SECRET, (err, user) => {
+        if (err) return res.status(401).json({ message: "Invalid refresh token" });
+
+        const accessToken = jwt.sign(
+            { id: user.id, role: user.role },
+            process.env.JWT_SECRET,
+            { expiresIn: "1d" }
         );
 
-        return res.status(200).json({ accessToken: newAccessToken });
-    } catch (err) {
-        return res.status(401).json({ message: "Refresh token expired" });
-    }
+        return res.json({ accessToken });
+    });
 };
 
 export const userController = GenericController(userService);

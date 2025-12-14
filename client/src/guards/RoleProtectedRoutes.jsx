@@ -1,8 +1,8 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet  } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
-export default function ProtectedRoute({ element, roles = [] }) {
-  const { isAuthenticated, role, loading } = useAuth();
+export default function ProtectedRoute({ roles = [] }) {
+   const { isAuthenticated, role, loading } = useAuth();
 
   if (loading) return null;
 
@@ -14,5 +14,5 @@ export default function ProtectedRoute({ element, roles = [] }) {
     return <Navigate to="/unauthorized" replace />;
   }
 
-  return element;
+  return <Outlet />;
 }

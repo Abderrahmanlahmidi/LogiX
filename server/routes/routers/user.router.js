@@ -36,7 +36,13 @@ router.get(
   userController.getOne
 );
 
-router.get("/users", authMiddleware, userController.getAll);
+router.get("/users", (req, res, next) => {
+    req.options = {
+        populate: ["roleId"],
+        select: "-password",
+    };
+    next();
+} ,authMiddleware, userController.getAll);
 router.put("/update-user/:id", authMiddleware, userController.update);
 
 export default router;

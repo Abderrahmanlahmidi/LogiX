@@ -1,8 +1,8 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
 
-export default function GuestOnlyRoute({ element }) {
+export default function GuestOnlyRoute() {
   const { isAuthenticated } = useAuth();
 
   if (isAuthenticated) {
@@ -10,5 +10,5 @@ export default function GuestOnlyRoute({ element }) {
     return <Navigate to="/" replace />;
   }
 
-  return element;
+  return <Outlet/>;
 }

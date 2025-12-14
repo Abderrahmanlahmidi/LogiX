@@ -5,24 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97d7aa10-ac83-461f-b4e8-65ac04fdb610" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../client/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/ui/inputs/Input.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/constants/DropDownConstants.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/constants/DropDownConstants.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/hooks/useAuth.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/hooks/useAuth.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/json/fakeData.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/json/fakeData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/pages/admin/dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/pages/admin/dashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/pages/home/sections/ProfileDropDown.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/pages/home/sections/ProfileDropDown.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/pages/profile/profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/pages/profile/profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/private/GuestOnlyRoutes.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/private/RoleProtectedRoutes.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/routes/lazyRoutes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/routes/lazyRoutes.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/routes/router.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/routes/router.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/routes/routesConfig.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/services/api.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/services/api.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/services/apis/userProfile.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2162e89d-5a31-47d1-8c57-683aacac713a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2162e89d-5a31-47d1-8c57-683aacac713a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/generic/generic.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/generic/generic.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/error.handler.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/error.handler.middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/jwt.token.generators.js" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/jwt.token.generators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Trip.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Trip.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Vehicle.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Vehicle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/routers/tire.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/tire.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/routers/trip.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/trip.router.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/routers/user.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/user.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/user.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/user.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/intergration/user.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/user.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/routers/vehicle.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/vehicle.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/vehicle.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/vehicle.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,13 +78,14 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;server/services__controllers__routes__tests&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;auth/LoginLogoutRegisterProtectRoutes&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Youcode&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.3.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -106,7 +116,7 @@
       <option name="presentableId" value="Default" />
       <updated>1765369176478</updated>
       <workItem from="1765369179246" duration="6225000" />
-      <workItem from="1765563705168" duration="1771000" />
+      <workItem from="1765563705168" duration="29830000" />
     </task>
     <servers />
   </component>

@@ -8,8 +8,6 @@ export const Dashboard = lazy(() => import("../pages/admin/dashboard"));
 export const Profile = lazy(() => import("../pages/profile/profile"));
 
 
-
-
 // eslint-disable-next-line react-refresh/only-export-components
 export const withSuspense = (Component) => {
   return <Suspense fallback={<LoaderPage />}>{Component}</Suspense>;

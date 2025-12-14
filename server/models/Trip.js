@@ -6,7 +6,12 @@ const TripSchema = new mongoose.Schema({
         ref: "User",
         required: true
     },
-    vehicleId: {
+    truckId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Vehicle",
+        required: true
+    },
+    trailerId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Vehicle",
         required: true

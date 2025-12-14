@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const VehicleSchema = new mongoose.Schema({
-    plateNumber: Number,
+    plateNumber: String,
     brand: String,
     model: String,
     currentKm: Number,

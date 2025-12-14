@@ -12,7 +12,7 @@ export const MenuItem = ({ setIsOpen, setConfirmOpen }) => {
       icon: LayoutDashboard,
       label: "Dashboard",
       path: "/dashboard",
-      roles: ["Admin"],
+      roles: ["Admin", "Driver"],
     },
     {
       icon: User,
