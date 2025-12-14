@@ -1,11 +1,17 @@
 import express from "express";
-import tripController from "../../controllers/trip.controller.js";
+import tripController, {getTripsByDriver} from "../../controllers/trip.controller.js";
 import { authMiddleware } from "../../middlewares/auth.middleware.js";
+
 
 const router = express.Router();
 
 // CRUD Routes
 router.get("/trip/:id", authMiddleware, tripController.getOne);
+router.get("/driver-trips/:driverId",
+    // authMiddleware,
+    getTripsByDriver
+    );
+
 router.get("/trips", (req, res, next) => {
     req.options = {
         populate: ["driverId", "truckId", "trailerId"],

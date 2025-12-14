@@ -2,19 +2,18 @@ import {
   LayoutDashboard,
   Truck,
   MapPin,
-  Fuel,
   Wrench,
   Box,
   Users,
-  Route
+  Route,
 } from "lucide-react";
 
 export const SIDEBAR_ITEMS = {
   Admin: [
     {
-      name: "Dashboard",
+      name: "Maintenance Rules",
       path: "/dashboard",
-      icon: LayoutDashboard,
+      icon: Wrench,
     },
     {
       name: "Users",
@@ -32,29 +31,18 @@ export const SIDEBAR_ITEMS = {
       path: "/dashboard/tires",
       icon: Box,
     },
-     {
+    {
       name: "Trip",
       path: "/dashboard/trips",
       icon: Route,
-    },
-
-    // {
-    //   name: "Fuel",
-    //   path: "/dashboard/fuel",
-    //   icon: Fuel,
-    // },
-    // {
-    //   name: "Maintenance",
-    //   path: "/dashboard/maintenance",
-    //   icon: Wrench,
-    // },
+    }
   ],
 
   Driver: [
-    {
-      name: "Dashboard",
+   {
+      name: "Maintenance Rules",
       path: "/dashboard",
-      icon: LayoutDashboard,
+      icon: Wrench,
     },
     {
       name: "Tracking",

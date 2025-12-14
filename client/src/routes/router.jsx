@@ -13,17 +13,15 @@ import {
 } from "./lazyRoutes";
 
 import Fleet from "../pages/admin/sections/fleet";
-import Main from "../pages/admin/sections/main";
 import Users from "../pages/admin/sections/users";
 import Tires from "../pages/admin/sections/tires";
 import Tracking from "../pages/admin/sections/tracking";
 import Trip from "../pages/admin/sections/trip";
+import MaintenanceRule from "../pages/admin/sections/maintenanceRule";
 
 
 import Unauthorized from "../pages/private/unauthorized";
 import NotFound from "../pages/private/notFound";
-
-
 
 
 export const router = createBrowserRouter([
@@ -65,7 +63,7 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: withSuspense(<Main />),
+            element: withSuspense(<MaintenanceRule />),
           },
 
           {

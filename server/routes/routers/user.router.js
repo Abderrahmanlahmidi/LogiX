@@ -18,7 +18,7 @@ const router = express.Router();
 router.post("/register", register);
 router.post("/login", login);
 router.post("/change-password/:id", authMiddleware, changePassword);
-router.put("/update-profile/:id", authMiddleware ,uploadProfile, updateProfile);
+router.put("/update-profile/:id" ,uploadProfile, updateProfile);
 router.post("/refresh", refreshToken);
 router.post("/logout", logout);
 

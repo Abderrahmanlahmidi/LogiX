@@ -8,16 +8,20 @@ const TripTable = ({
   isLoading = false
 }) => {
 
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'active': return 'bg-success/10 text-success';
-      case 'done': return 'bg-info/10 text-info';
-      case 'pending': return 'bg-warning/10 text-warning';
-      case 'canceled': return 'bg-error/10 text-error';
-      default: return 'bg-bg-dark text-text';
-    }
-  };
-
+const getStatusColor = (status) => {
+  switch (status) {
+    case 'active': 
+      return 'bg-green-500/10 text-green-500';
+    case 'done': 
+      return 'bg-blue-500/10 text-blue-500';
+    case 'pending': 
+      return 'bg-yellow-500/10 text-yellow-500';
+    case 'canceled': 
+      return 'bg-red-500/10 text-red-500';
+    default: 
+      return 'bg-gray-500/10 text-gray-500';
+  }
+};
   const formatDate = (dateString) => {
     if (!dateString) return 'N/A';
     const date = new Date(dateString);

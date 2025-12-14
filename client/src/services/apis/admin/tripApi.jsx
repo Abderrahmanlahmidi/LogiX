@@ -20,4 +20,10 @@ export const tripApi = {
     const res = await api.delete(`/delete-trip/${id}`);
     return res.data;
   },
+
+  getTripsByDriver: async (driverId) => {
+    const res = await api.get(`/driver-trips/${driverId}`);
+    return res.data;
+  }
+
 };

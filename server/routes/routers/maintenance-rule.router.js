@@ -10,14 +10,15 @@ router.get(
   authMiddleware,
   maintenanceRuleController.getOne
 );
+
 router.get(
   "/maintenance-rules",
-  authMiddleware,
+  // authMiddleware,
   maintenanceRuleController.getAll
 );
 router.post(
   "/create-maintenance-rule",
-  authMiddleware,
+  // authMiddleware,
   maintenanceRuleController.create
 );
 router.delete(
