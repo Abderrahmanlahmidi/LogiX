@@ -6,6 +6,7 @@ import { tripApi } from "../../../services/apis/admin/tripApi";
 import { useSearch } from "../../../hooks/useSearch";
 import { ConfirmPopup } from "../../../components/ui/confirmPopup/ConfirmPopup";
 import TripTable from "../components/tables/tripTable";
+import TripStats from "../components/tripStats";
 
 export default function Trip() {
   const queryClient = useQueryClient();
@@ -94,12 +95,17 @@ export default function Trip() {
         searchPlaceholder="Search trips..."
       />
 
+      <TripStats trips={data?.data || []} />
+
+      {/* Trip Table */}
+      <div className="px-6">
         <TripTable
           data={trips}
           onEdit={handleEdit}
           onDelete={handleDelete}
           isLoading={isLoading}
         />
+      </div>
 
       <TripForm
         isOpen={isOpen}

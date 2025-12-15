@@ -18,6 +18,7 @@ import Tires from "../pages/admin/sections/tires";
 import Tracking from "../pages/admin/sections/tracking";
 import Trip from "../pages/admin/sections/trip";
 import MaintenanceRule from "../pages/admin/sections/maintenanceRule";
+import Statistics from "../pages/admin/sections/statistics";
 
 
 import Unauthorized from "../pages/private/unauthorized";
@@ -84,9 +85,14 @@ export const router = createBrowserRouter([
               {
                 path: "trips",
                 element: withSuspense(<Trip />)
+              },
+              {
+                path: "statistics",
+                element: withSuspense(<Statistics />)
               }
             ],
           },
+          
           {
             element: <ProtectedRoute roles={["Driver"]} />,
             children: [

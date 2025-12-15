@@ -8,16 +8,20 @@ import {
   Truck,
   Package,
   Fuel,
-  Clock,
-  CheckCircle,
-  AlertCircle,
-  PlayCircle,
-  XCircle,
   ChevronRight,
   Navigation,
   Flag,
+  AlertCircle,
+  Download,
+  FileText,
+  PlayCircle,
+  CheckCircle,
+  Clock,
   Ban
 } from "lucide-react";
+import Button from "../../../components/ui/buttons/Button";
+import TripStats from "../components/tripStats";
+import { generateTripPDF } from "../../../services/tripPdfService";
 
 export default function Tracking() {
   const driverId = useSelector((state) => state.auth.user.userId);
@@ -87,6 +91,10 @@ export default function Tracking() {
     });
   };
 
+  const handleExportPDF = (trip) => {
+    generateTripPDF(trip)
+  };
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-bg">
@@ -138,7 +146,7 @@ export default function Tracking() {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 py-8">
         {trips.length === 0 ? (
           <div className="text-center py-16 bg-bg border border-secondary rounded-lg">
             <MapPin className="h-16 w-16 text-text/40 mx-auto mb-4" />
@@ -149,69 +157,7 @@ export default function Tracking() {
           </div>
         ) : (
           <>
-            {/* Stats Overview */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-              {/* Active Trips */}
-              <div className="bg-green-900/10 border border-green-800/30 rounded-lg p-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-green-900/20 rounded-lg">
-                    <PlayCircle className="h-5 w-5 text-green-400" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-green-300">Active Trips</div>
-                    <div className="text-2xl font-bold text-green-400">
-                      {trips.filter((t) => t.status === "active").length}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Completed */}
-              <div className="bg-blue-900/10 border border-blue-800/30 rounded-lg p-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-blue-900/20 rounded-lg">
-                    <CheckCircle className="h-5 w-5 text-blue-400" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-blue-300">Completed</div>
-                    <div className="text-2xl font-bold text-blue-400">
-                      {trips.filter((t) => t.status === "done").length}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Scheduled */}
-              <div className="bg-yellow-900/10 border border-yellow-800/30 rounded-lg p-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-yellow-900/20 rounded-lg">
-                    <Clock className="h-5 w-5 text-yellow-400" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-yellow-300">Scheduled</div>
-                    <div className="text-2xl font-bold text-yellow-400">
-                      {trips.filter((t) => t.status === "pending").length}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Canceled */}
-              <div className="bg-red-900/10 border border-red-800/30 rounded-lg p-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-red-900/20 rounded-lg">
-                    <Ban className="h-5 w-5 text-red-400" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-red-300">Canceled</div>
-                    <div className="text-2xl font-bold text-red-400">
-                      {trips.filter((t) => t.status === "canceled").length}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+            <TripStats trips={trips} />
             {/* Trips Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {trips.map((trip) => {
@@ -230,9 +176,13 @@ export default function Tracking() {
                           <div
                             className={`p-2 rounded-lg ${statusConfig.bgColor}`}
                           >
-                            <StatusIcon
+                            <div
                               className={`h-5 w-5 ${statusConfig.textColor}`}
-                            />
+                            >
+                              <StatusIcon
+                                className={`h-5 w-5 ${statusConfig.textColor}`}
+                              />
+                            </div>
                           </div>
                           <div>
                             <h3 className="font-medium text-text-light">
@@ -245,7 +195,18 @@ export default function Tracking() {
                             </span>
                           </div>
                         </div>
-                        <ChevronRight className="h-5 w-5 text-text/60" />
+                        <div className="flex items-center gap-2">
+                          {/* PDF Export Button */}
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            icon={FileText}
+                            onClick={() => handleExportPDF(trip)}
+                            className="text-text hover:text-accent"
+                            title="Export Trip Report as PDF"
+                          />
+                          <ChevronRight className="h-5 w-5 text-text/60" />
+                        </div>
                       </div>
                     </div>
 
@@ -334,6 +295,21 @@ export default function Tracking() {
                           </div>
                         </div>
                       )}
+
+                      {/* PDF Export Button at Bottom */}
+                      <div className="mt-4 pt-4 border-t border-secondary">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          icon={Download}
+                          onClick={() => handleExportPDF(trip)}
+                          fullWidth
+                          className="gap-2"
+                        >
+                          <FileText className="h-4 w-4" />
+                          Export Trip Report
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 );
@@ -360,7 +336,9 @@ export default function Tracking() {
                       <div>
                         <div className="text-sm text-text mb-1">Status</div>
                         <div className="flex items-center gap-2">
-                          <StatusIcon className="h-4 w-4 text-green-400" />
+                          <div className="h-4 w-4 text-green-400">
+                            {/* Status icon */}
+                          </div>
                           <span className="text-text-light font-medium">
                             {getStatusConfig(selectedTrip.status).label}
                           </span>
@@ -401,6 +379,19 @@ export default function Tracking() {
                           </div>
                         </div>
                       )}
+                      {/* PDF Export Button in Modal */}
+                      <div className="pt-4 border-t border-secondary">
+                        <Button
+                          variant="accent"
+                          icon={Download}
+                          onClick={() => handleExportPDF(selectedTrip)}
+                          fullWidth
+                          className="gap-2"
+                        >
+                          <FileText className="h-4 w-4" />
+                          Download Trip Report PDF
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>
