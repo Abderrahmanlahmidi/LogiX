@@ -1,11 +1,21 @@
 import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
-import { 
-  Wrench, Droplets, Filter, Circle, AlertTriangle, 
-  Edit2, Trash2, Plus, CheckCircle, XCircle, 
-  Calendar, TrendingUp, FileText
-} from 'lucide-react';
+import {
+  Wrench,
+  Droplets,
+  Filter,
+  Circle,
+  AlertTriangle,
+  Edit2,
+  Trash2,
+  Plus,
+  CheckCircle,
+  XCircle,
+  Calendar,
+  TrendingUp,
+  FileText
+} from "lucide-react";
 import { maintenanceRulesApi } from "../../../services/apis/admin/maintenanceRulesApi";
 import MaintenanceRuleForm from "../components/forms/maintenanceRulesForm";
 import { ConfirmPopup } from "../../../components/ui/confirmPopup/ConfirmPopup";
@@ -13,14 +23,17 @@ import Button from "../../../components/ui/buttons/Button";
 
 const MaintenanceRule = () => {
   const queryClient = useQueryClient();
-  const role = useSelector(state => state.auth.user.role);
-  
+  const role = useSelector((state) => state.auth.user.role);
+
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [isUpdateOpen, setIsUpdateOpen] = useState(false);
   const [selectedRule, setSelectedRule] = useState(null);
-  const [deleteConfirm, setDeleteConfirm] = useState({ show: false, ruleId: null });
+  const [deleteConfirm, setDeleteConfirm] = useState({
+    show: false,
+    ruleId: null,
+  });
 
-  const isAdmin = role  === "Admin";
+  const isAdmin = role === "Admin";
 
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["maintenance-rules"],
@@ -40,7 +53,8 @@ const MaintenanceRule = () => {
   });
 
   const updateMutation = useMutation({
-    mutationFn: ({ id, data }) => maintenanceRulesApi.updateMaintenanceRule(id, data),
+    mutationFn: ({ id, data }) =>
+      maintenanceRulesApi.updateMaintenanceRule(id, data),
     onSuccess: () => {
       queryClient.invalidateQueries(["maintenance-rules"]);
       setSelectedRule(null);
@@ -64,7 +78,7 @@ const MaintenanceRule = () => {
     setSelectedRule(rule);
     setIsUpdateOpen(true);
   };
-  
+
   const handleDelete = (id) => {
     setDeleteConfirm({ show: true, ruleId: id });
   };
@@ -88,24 +102,33 @@ const MaintenanceRule = () => {
     }
   };
 
-  // Helper functions
   const getTypeIcon = (type) => {
     switch (type) {
-      case 'oil': return Droplets;
-      case 'filter': return Filter;
-      case 'tire': return Circle;
-      case 'brake': return AlertTriangle;
-      default: return Wrench;
+      case "oil":
+        return Droplets;
+      case "filter":
+        return Filter;
+      case "tire":
+        return Circle;
+      case "brake":
+        return AlertTriangle;
+      default:
+        return Wrench;
     }
   };
 
   const getTypeLabel = (type) => {
     switch (type) {
-      case 'oil': return 'Oil Change';
-      case 'filter': return 'Filter Replacement';
-      case 'tire': return 'Tire Maintenance';
-      case 'brake': return 'Brake Service';
-      default: return type;
+      case "oil":
+        return "Oil Change";
+      case "filter":
+        return "Filter Replacement";
+      case "tire":
+        return "Tire Maintenance";
+      case "brake":
+        return "Brake Service";
+      default:
+        return type;
     }
   };
 
@@ -124,15 +147,18 @@ const MaintenanceRule = () => {
     <div className="min-h-screen bg-bg">
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
         {/* Page Header */}
         <div className="mb-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
             <div>
-              <h1 className="text-3xl font-bold text-text-light">Maintenance Rules</h1>
-              <p className="text-text mt-2">Maintenance schedules for fleet management</p>
+              <h1 className="text-3xl font-bold text-text-light">
+                Maintenance Rules
+              </h1>
+              <p className="text-text mt-2">
+                Maintenance schedules for fleet management
+              </p>
             </div>
-            
+
             {isAdmin && (
               <Button
                 variant="accent"
@@ -147,27 +173,33 @@ const MaintenanceRule = () => {
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-            <div className=" border border-secondary rounded-lg p-6">
+            {/* Total Rules - Indigo/Violet */}
+            <div className="bg-indigo-900/10 border border-indigo-800/30 rounded-lg p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-text">Total Rules</p>
-                  <p className="text-3xl font-bold text-text-light mt-1">
+                  <p className="text-sm text-indigo-300">Total Rules</p>
+                  <p className="text-3xl font-bold text-indigo-400 mt-1">
                     {rules.length || 0}
                   </p>
                 </div>
-                <Wrench className="h-12 w-12 text-accent/60" />
+                <div className="p-3 bg-indigo-900/20 rounded-lg">
+                  <Wrench className="h-8 w-8 text-indigo-400" />
+                </div>
               </div>
             </div>
-            
-            <div className=" border border-secondary rounded-lg p-6">
+
+            {/* Active Rules - Green */}
+            <div className="bg-green-900/10 border border-green-800/30 rounded-lg p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-text">Active Rules</p>
-                  <p className="text-3xl font-bold text-success mt-1">
-                    {rules.filter(r => r.isActive).length || 0}
+                  <p className="text-sm text-green-300">Active Rules</p>
+                  <p className="text-3xl font-bold text-green-400 mt-1">
+                    {rules.filter((r) => r.isActive).length || 0}
                   </p>
                 </div>
-                <CheckCircle className="h-12 w-12 text-success/60" />
+                <div className="p-3 bg-green-900/20 rounded-lg">
+                  <CheckCircle className="h-8 w-8 text-green-400" />
+                </div>
               </div>
             </div>
           </div>
@@ -177,14 +209,14 @@ const MaintenanceRule = () => {
         {rules.length === 0 ? (
           <div className="text-center py-16 bg-bg-dark border border-secondary rounded-lg">
             <Wrench className="h-16 w-16 text-text/40 mx-auto mb-4" />
-            <h3 className="text-xl font-medium text-text-light mb-2">No Maintenance Rules</h3>
-            <p className="text-text mb-6">Create maintenance rules to get started</p>
+            <h3 className="text-xl font-medium text-text-light mb-2">
+              No Maintenance Rules
+            </h3>
+            <p className="text-text mb-6">
+              Create maintenance rules to get started
+            </p>
             {isAdmin && (
-              <Button
-                variant="accent"
-                icon={Plus}
-                onClick={handleCreateClick}
-              >
+              <Button variant="accent" icon={Plus} onClick={handleCreateClick}>
                 Create First Rule
               </Button>
             )}
@@ -193,12 +225,12 @@ const MaintenanceRule = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {rules.map((rule) => {
               const TypeIcon = getTypeIcon(rule.type);
-              
+
               return (
-                <div 
-                  key={rule._id} 
+                <div
+                  key={rule._id}
                   className={`bg-bg-dark border rounded-lg overflow-hidden transition-all hover:shadow-lg ${
-                    rule.isActive ? 'border-secondary' : 'border-error'
+                    rule.isActive ? "border-secondary" : "border-error"
                   }`}
                 >
                   {/* Card Header */}
@@ -211,11 +243,13 @@ const MaintenanceRule = () => {
                             {getTypeLabel(rule.type)}
                           </h3>
                           <div className="flex items-center gap-2 mt-1">
-                            <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${
-                              rule.isActive 
-                                ? 'bg-success/10 text-success' 
-                                : 'bg-error/10 text-error'
-                            }`}>
+                            <span
+                              className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${
+                                rule.isActive
+                                  ? "bg-success/10 text-success"
+                                  : "bg-error/10 text-error"
+                              }`}
+                            >
                               {rule.isActive ? (
                                 <>
                                   <CheckCircle className="h-3 w-3 mr-1" />
@@ -231,7 +265,7 @@ const MaintenanceRule = () => {
                           </div>
                         </div>
                       </div>
-                      
+
                       {/* Admin Actions */}
                       {isAdmin && (
                         <div className="flex gap-1">
@@ -266,8 +300,10 @@ const MaintenanceRule = () => {
                         <div className="flex items-center justify-between">
                           <div>
                             <div className="text-text-light font-medium">
-                              Every {rule.recommendedKm?.toLocaleString() || '—'} km
-                              {rule.recommendedMonths && ` or ${rule.recommendedMonths} months`}
+                              Every{" "}
+                              {rule.recommendedKm?.toLocaleString() || "—"} km
+                              {rule.recommendedMonths &&
+                                ` or ${rule.recommendedMonths} months`}
                             </div>
                           </div>
                           <Calendar className="h-4 w-4 text-text/60" />
@@ -296,9 +332,7 @@ const MaintenanceRule = () => {
 
         {/* Info Footer */}
         <div className="mt-8 text-center text-sm text-text">
-          <p>
-            Showing {rules.length} maintenance rules
-          </p>
+          <p>Showing {rules.length} maintenance rules</p>
         </div>
       </div>
 

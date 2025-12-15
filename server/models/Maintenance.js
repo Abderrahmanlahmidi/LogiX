@@ -6,16 +6,28 @@ const MaintenanceSchema = new mongoose.Schema({
         ref: "MaintenanceRule",
         required: true
     },
-    description: String,
-    cost: String,
-    date: Date,
+
     vehicleId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Vehicle",
         required: true
     },
-    kmAtMaintenance: Number,
-    targetType: { type: String, enum: ["truck", "trailer"] }
+
+    targetType: {
+        type: String,
+        required: true
+    },
+
+    component: {
+        type: String,
+        required: true
+    },
+
+    description: String,
+    cost: String,
+    date: Date,
+    kmAtMaintenance: Number
+
 }, { timestamps: true });
 
 const Maintenance = mongoose.model("Maintenance", MaintenanceSchema);

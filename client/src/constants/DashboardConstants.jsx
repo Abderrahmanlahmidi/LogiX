@@ -1,11 +1,11 @@
 import {
-  LayoutDashboard,
   Truck,
   MapPin,
   Wrench,
   Box,
   Users,
   Route,
+  PieChart,
 } from "lucide-react";
 
 export const SIDEBAR_ITEMS = {
@@ -14,6 +14,11 @@ export const SIDEBAR_ITEMS = {
       name: "Maintenance Rules",
       path: "/dashboard",
       icon: Wrench,
+    },
+    {
+      name: "Statistics",
+      path: "/dashboard/statistics",
+      icon: PieChart,
     },
     {
       name: "Users",
@@ -35,11 +40,11 @@ export const SIDEBAR_ITEMS = {
       name: "Trip",
       path: "/dashboard/trips",
       icon: Route,
-    }
+    },
   ],
 
   Driver: [
-   {
+    {
       name: "Maintenance Rules",
       path: "/dashboard",
       icon: Wrench,

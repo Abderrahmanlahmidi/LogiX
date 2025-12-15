@@ -1,5 +1,5 @@
 import express from "express";
-import tripController, {getTripsByDriver} from "../../controllers/trip.controller.js";
+import tripController, {createTrip, getTripsByDriver, updateTrip} from "../../controllers/trip.controller.js";
 import { authMiddleware } from "../../middlewares/auth.middleware.js";
 
 
@@ -18,8 +18,8 @@ router.get("/trips", (req, res, next) => {
     };
     next();
 }, authMiddleware,tripController.getAll);
-router.post("/create-trip", tripController.create);
+router.post("/create-trip", createTrip);
 router.delete("/delete-trip/:id", authMiddleware, tripController.delete);
-router.put("/update-trip/:id", authMiddleware, tripController.update);
+router.put("/update-trip/:id", updateTrip);
 
 export default router;
