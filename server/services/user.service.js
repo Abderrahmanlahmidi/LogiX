@@ -28,20 +28,26 @@ export const AuthService = {
     return { user };
   },
 
-  async login(data) {
-    const { email, password } = data;
+async login(data) {
+  const { email, password } = data;
 
-    const user = await Model.User.findOne({ email }).populate("roleId");
-    if (!user) throw Error("User not found");
+  const normalizedEmail = email.trim().toLowerCase();
 
-    const checkPassword = bcrypt.compare(password, user.password);
-    if (!checkPassword) throw Error("Password is incorrect");
+  const user = await Model.User
+    .findOne({ email: normalizedEmail })
+    .populate("roleId");
 
-    const token = GenerateToken(user);
-    const refreshToken = GenerateRefreshToken(user);
+  if (!user) throw new Error("User not found");
 
-    return { user, token, refreshToken };
-  },
+  const checkPassword = await bcrypt.compare(password, user.password);
+  if (!checkPassword) throw new Error("Password is incorrect");
+
+  const token = GenerateToken(user);
+  const refreshToken = GenerateRefreshToken(user);
+
+  return { user, token, refreshToken };
+},
+
 
   async changePassword(id, data) {
     const { oldPassword, newPassword } = data;
