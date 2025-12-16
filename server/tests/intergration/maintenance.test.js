@@ -27,6 +27,7 @@ describe("Maintenance Routes", () => {
       currentKm: 150000,
       status: "active",
       type: "truck",
+      component:"Tire"
     });
     vehicleId = vehicle._id.toString();
   });
@@ -43,6 +44,7 @@ describe("Maintenance Routes", () => {
         vehicleId: vehicleId,
         kmAtMaintenance: 150000,
         targetType: "truck",
+        component:"Tire"
       });
 
     expect(res.status).to.equal(200);
@@ -101,6 +103,7 @@ describe("Maintenance Routes", () => {
       vehicleId: vehicleId,
       kmAtMaintenance: 150000,
       targetType: "truck",
+      component:"trip"
     });
 
     const res = await request(app)

@@ -82,7 +82,7 @@ export const createTrip = async (req, res) => {
         });
 
         res.status(201).json({
-            success: true,
+            status: "create successfully",
             data: trip
         });
 
@@ -158,7 +158,7 @@ export const updateTrip = async (req, res) => {
     Object.assign(trip, u);
     await trip.save();
 
-    res.json({ success: true, data: trip });
+    res.json({ status: "updated successfully", data: trip });
 
   } catch (err) {
     console.error("Update Trip Error:", err.message);
