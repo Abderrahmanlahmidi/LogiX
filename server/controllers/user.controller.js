@@ -15,16 +15,18 @@ export const register = async (req, res) => {
 };
 
 export const login = async (req, res) => {
+  console.log("BODY:", req.body);
+  console.log("EMAIL:", req.body.email);
 
   try {
     const result = await AuthService.login(req.body);
 
-      res.cookie("refreshToken", refreshToken, {
-          httpOnly: true,
-          secure: false,
-          sameSite: "Lax",
-          maxAge: 7 * 24 * 60 * 60 * 1000,
-      });
+    res.cookie("refreshToken", result.refreshToken, {
+      httpOnly: true,
+      secure: false,
+      sameSite: "Lax",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
 
     return res.status(200).json({
       status: "user login successfully",
@@ -34,9 +36,11 @@ export const login = async (req, res) => {
       },
     });
   } catch (err) {
-    return res.status(500).json({ error: err.message });
+    console.log("LOGIN ERROR:", err.message);
+    return res.status(400).json({ error: err.message });
   }
 };
+
 
 export const changePassword = async (req, res) => {
   try {
@@ -81,7 +85,6 @@ export const logout = (req, res) => {
 export const refreshToken = (req, res) => {
     const refreshToken = req.cookies.refreshToken;
 
-    console.log("Cookies:", req.cookies);
 
     if (!refreshToken) return res.status(401).json({ message: "No refresh token" });
 
