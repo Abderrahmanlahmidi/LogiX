@@ -5,7 +5,7 @@ import {
   Fuel, 
   BarChart3, 
   TrendingUp,
-  Activity,
+  Activity
 } from "lucide-react";
 import { vehicleApi } from "../../../services/apis/admin/fleetApi";
 import { maintenanceRulesApi } from "../../../services/apis/admin/maintenanceRulesApi";
