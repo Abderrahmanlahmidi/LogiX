@@ -4,7 +4,6 @@ import { authMiddleware } from "../../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
-// CRUD Routes
 router.get("/maintenance/:id", authMiddleware, maintenanceController.getOne);
 router.get("/maintenances", authMiddleware, maintenanceController.getAll);
 router.post(

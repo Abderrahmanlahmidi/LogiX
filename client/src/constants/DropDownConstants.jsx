@@ -1,7 +1,6 @@
-import { User, LayoutDashboard, LogOut } from "lucide-react";
-import { useSelector, useDispatch } from "react-redux";
+import { LayoutDashboard, LogOut } from "lucide-react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { clearUser } from "../store/slices/authSlice";
 
 export const MenuItem = ({ setIsOpen, setConfirmOpen }) => {
   const navigate = useNavigate();
@@ -12,12 +11,6 @@ export const MenuItem = ({ setIsOpen, setConfirmOpen }) => {
       icon: LayoutDashboard,
       label: "Dashboard",
       path: "/dashboard",
-      roles: ["Admin", "Driver"],
-    },
-    {
-      icon: User,
-      label: "Profile",
-      path: "/profile",
       roles: ["Admin", "Driver"],
     },
   ];

@@ -4,7 +4,6 @@ import { authMiddleware } from "../../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
-// ------------------ CRUD -------------------
 router.get("/role/:id", authMiddleware, roleController.getOne);
 router.get("/roles", authMiddleware, roleController.getAll);
 router.post("/create-role", authMiddleware, roleController.create);

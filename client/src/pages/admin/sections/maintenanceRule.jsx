@@ -40,7 +40,7 @@ const MaintenanceRule = () => {
     queryFn: maintenanceRulesApi.getMaintenanceRules,
   });
 
-  // Show all rules (not filtered by active)
+
   const rules = data?.data || [];
 
   const createMutation = useMutation({
@@ -48,7 +48,7 @@ const MaintenanceRule = () => {
     onSuccess: () => {
       queryClient.invalidateQueries(["maintenance-rules"]);
       setIsCreateOpen(false);
-      refetch(); // Refresh data to show new rule
+      refetch();
     },
   });
 
@@ -145,9 +145,7 @@ const MaintenanceRule = () => {
 
   return (
     <div className="min-h-screen bg-bg">
-      {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Page Header */}
         <div className="mb-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
             <div>
@@ -171,9 +169,7 @@ const MaintenanceRule = () => {
             )}
           </div>
 
-          {/* Stats Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-            {/* Total Rules - Indigo/Violet */}
             <div className="bg-indigo-900/10 border border-indigo-800/30 rounded-lg p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -188,7 +184,6 @@ const MaintenanceRule = () => {
               </div>
             </div>
 
-            {/* Active Rules - Green */}
             <div className="bg-green-900/10 border border-green-800/30 rounded-lg p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -205,7 +200,6 @@ const MaintenanceRule = () => {
           </div>
         </div>
 
-        {/* Rules Grid */}
         {rules.length === 0 ? (
           <div className="text-center py-16 bg-bg-dark border border-secondary rounded-lg">
             <Wrench className="h-16 w-16 text-text/40 mx-auto mb-4" />
@@ -233,7 +227,6 @@ const MaintenanceRule = () => {
                     rule.isActive ? "border-secondary" : "border-error"
                   }`}
                 >
-                  {/* Card Header */}
                   <div className="p-4 border-b border-secondary bg-bg">
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
@@ -266,7 +259,6 @@ const MaintenanceRule = () => {
                         </div>
                       </div>
 
-                      {/* Admin Actions */}
                       {isAdmin && (
                         <div className="flex gap-1">
                           <Button
@@ -288,9 +280,7 @@ const MaintenanceRule = () => {
                     </div>
                   </div>
 
-                  {/* Card Body */}
                   <div className="p-4 bg-bg">
-                    {/* Interval */}
                     <div className="mb-4">
                       <div className="flex items-center gap-2 text-sm text-text mb-2">
                         <TrendingUp className="h-4 w-4" />
@@ -311,7 +301,6 @@ const MaintenanceRule = () => {
                       </div>
                     </div>
 
-                    {/* Description */}
                     {rule.description && (
                       <div>
                         <div className="flex items-center gap-2 text-sm text-text mb-2">
@@ -330,13 +319,11 @@ const MaintenanceRule = () => {
           </div>
         )}
 
-        {/* Info Footer */}
         <div className="mt-8 text-center text-sm text-text">
           <p>Showing {rules.length} maintenance rules</p>
         </div>
       </div>
 
-      {/* Create Form Modal */}
       <MaintenanceRuleForm
         isOpen={isCreateOpen}
         onClose={() => setIsCreateOpen(false)}
@@ -345,7 +332,6 @@ const MaintenanceRule = () => {
         isLoading={createMutation.isLoading}
       />
 
-      {/* Update Form Modal */}
       <MaintenanceRuleForm
         isOpen={isUpdateOpen}
         onClose={() => {
@@ -358,7 +344,6 @@ const MaintenanceRule = () => {
         isLoading={updateMutation.isLoading}
       />
 
-      {/* Delete Confirmation */}
       <ConfirmPopup
         isOpen={deleteConfirm.show}
         onClose={() => setDeleteConfirm({ show: false, ruleId: null })}

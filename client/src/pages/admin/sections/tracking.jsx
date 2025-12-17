@@ -122,7 +122,6 @@ export default function Tracking() {
 
   return (
     <div className="min-h-screen bg-bg">
-      {/* Header */}
       <div className="bg-bg border-b border-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-between">
@@ -145,7 +144,6 @@ export default function Tracking() {
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-8">
         {trips.length === 0 ? (
           <div className="text-center py-16 bg-bg border border-secondary rounded-lg">
@@ -158,7 +156,6 @@ export default function Tracking() {
         ) : (
           <>
             <TripStats trips={trips} />
-            {/* Trips Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {trips.map((trip) => {
                 const statusConfig = getStatusConfig(trip.status);
@@ -169,7 +166,6 @@ export default function Tracking() {
                     key={trip._id}
                     className="bg-bg border border-secondary rounded-lg overflow-hidden hover:border-accent/50 transition-colors"
                   >
-                    {/* Trip Header */}
                     <div className="p-4 border-b border-secondary bg-bg">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
@@ -196,7 +192,6 @@ export default function Tracking() {
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
-                          {/* PDF Export Button */}
                           <Button
                             variant="ghost"
                             size="sm"
@@ -210,9 +205,7 @@ export default function Tracking() {
                       </div>
                     </div>
 
-                    {/* Trip Details */}
                     <div className="p-4">
-                      {/* Route */}
                       <div className="mb-4">
                         <div className="flex items-center gap-2 text-sm text-text mb-2">
                           <MapPin className="h-4 w-4" />
@@ -229,7 +222,6 @@ export default function Tracking() {
                         </div>
                       </div>
 
-                      {/* Dates */}
                       <div className="mb-4">
                         <div className="flex items-center gap-2 text-sm text-text mb-2">
                           <Calendar className="h-4 w-4" />
@@ -253,7 +245,6 @@ export default function Tracking() {
                         </div>
                       </div>
 
-                      {/* Vehicles */}
                       <div className="mb-4">
                         <div className="flex items-center gap-2 text-sm text-text mb-2">
                           <Truck className="h-4 w-4" />
@@ -281,7 +272,6 @@ export default function Tracking() {
                         </div>
                       </div>
 
-                      {/* Fuel */}
                       {trip.fuelLiters && (
                         <div>
                           <div className="flex items-center gap-2 text-sm text-text mb-2">
@@ -296,7 +286,6 @@ export default function Tracking() {
                         </div>
                       )}
 
-                      {/* PDF Export Button at Bottom */}
                       <div className="mt-4 pt-4 border-t border-secondary">
                         <Button
                           variant="outline"
@@ -316,7 +305,6 @@ export default function Tracking() {
               })}
             </div>
 
-            {/* Trip Details Modal */}
             {selectedTrip && (
               <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
                 <div className="bg-bg border border-secondary rounded-lg max-w-lg w-full max-h-[90vh] overflow-y-auto">
@@ -379,7 +367,6 @@ export default function Tracking() {
                           </div>
                         </div>
                       )}
-                      {/* PDF Export Button in Modal */}
                       <div className="pt-4 border-t border-secondary">
                         <Button
                           variant="accent"

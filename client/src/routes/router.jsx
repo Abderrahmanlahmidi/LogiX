@@ -8,8 +8,7 @@ import {
   Home,
   Login,
   Register,
-  Dashboard,
-  Profile
+  Dashboard
 } from "./lazyRoutes";
 
 import Fleet from "../pages/admin/sections/fleet";
@@ -103,11 +102,6 @@ export const router = createBrowserRouter([
             ],
           },
         ],
-      },
-
-      {
-        path: "/profile",
-        element: withSuspense(<Profile />),
       },
     ],
   },

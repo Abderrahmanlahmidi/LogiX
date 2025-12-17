@@ -4,7 +4,6 @@ import { authMiddleware } from "../../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
-// CRUD Routes
 router.get("/notification/:id", authMiddleware, notificationController.getOne);
 router.get("/notifications", authMiddleware, notificationController.getAll);
 router.post(

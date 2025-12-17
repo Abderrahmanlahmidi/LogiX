@@ -66,7 +66,6 @@ const FleetForm = ({
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Overlay */}
           <motion.div
             variants={overlayVariants}
             initial="hidden"
@@ -77,7 +76,6 @@ const FleetForm = ({
             onClick={handleClose}
           />
           
-          {/* Form Modal */}
           <div className="fixed inset-0 flex items-center justify-center p-4 z-50">
             <motion.div
               variants={formVariants}
@@ -88,7 +86,6 @@ const FleetForm = ({
               className="w-full max-w-md bg-bg border border-secondary rounded-lg shadow-lg"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Header */}
               <div className="flex items-center justify-between p-4 border-b border-secondary">
                 <h2 className="text-lg font-normal text-text-light">
                   {isEditMode ? 'Edit Vehicle' : title}
@@ -101,10 +98,8 @@ const FleetForm = ({
                 </button>
               </div>
 
-              {/* Form */}
               <form onSubmit={handleSubmit(handleFormSubmit)} className="p-4">
                 <div className="space-y-4">
-                  {/* Plate Number */}
                   <div>
                     <label className="block text-sm text-text mb-1">
                       Plate Number *
@@ -124,7 +119,6 @@ const FleetForm = ({
                     )}
                   </div>
 
-                  {/* Brand & Model Row */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-sm text-text mb-1">
@@ -165,7 +159,6 @@ const FleetForm = ({
                     </div>
                   </div>
 
-                  {/* Current KM */}
                   <div>
                     <label className="block text-sm text-text mb-1">
                       Current Kilometers *
@@ -186,7 +179,6 @@ const FleetForm = ({
                     )}
                   </div>
 
-                  {/* Type Selection */}
                   <div>
                     <label className="block text-sm text-text mb-1">
                       Vehicle Type *
@@ -220,7 +212,6 @@ const FleetForm = ({
                     </div>
                   </div>
 
-                  {/* Status Selection */}
                   <div>
                     <label className="block text-sm text-text mb-1">
                       Status *
@@ -236,7 +227,6 @@ const FleetForm = ({
                   </div>
                 </div>
 
-                {/* Actions */}
                 <div className="flex gap-2 mt-6 pt-4 border-t border-secondary">
                   <Button
                     type="button"
