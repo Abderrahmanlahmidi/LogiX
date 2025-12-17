@@ -71,7 +71,6 @@ const getStatusColor = (status) => {
           {data.map((trip) => (
             <tr key={trip._id} className="border-b border-secondary/30 hover:bg-bg-dark transition-colors">
               
-              {/* Driver */}
               <td className="py-3 px-4">
                 <div className="flex items-center gap-2">
                   <User className="h-4 w-4 text-text/60" />
@@ -86,7 +85,6 @@ const getStatusColor = (status) => {
                 </div>
               </td>
 
-              {/* Route */}
               <td className="py-3 px-4">
                 <div className="flex items-center gap-2">
                   <MapPin className="h-4 w-4 text-text/60 flex-shrink-0" />
@@ -96,7 +94,6 @@ const getStatusColor = (status) => {
                 </div>
               </td>
 
-              {/* Date */}
               <td className="py-3 px-4">
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4 text-text/60" />
@@ -106,7 +103,6 @@ const getStatusColor = (status) => {
                 </div>
               </td>
 
-              {/* Vehicle */}
               <td className="py-3 px-4">
                 <div className="flex items-center gap-2">
                   <Truck className="h-4 w-4 text-text/60" />
@@ -121,14 +117,12 @@ const getStatusColor = (status) => {
                 </div>
               </td>
 
-              {/* Status */}
               <td className="py-3 px-4">
                 <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium capitalize ${getStatusColor(trip.status)}`}>
                   {trip.status}
                 </span>
               </td>
 
-              {/* Actions */}
               <td className="py-3 px-4">
                 <div className="flex gap-2">
                   <Button

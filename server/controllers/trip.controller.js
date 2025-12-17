@@ -3,8 +3,6 @@ import { GenericController } from "./generic/generic.controller.js";
 import Trip from "../models/Trip.js";
 import Vehicle from "../models/Vehicle.js";
 
-
-
 export const getTripsByDriver = async (req, res) => {
     try {
         const { driverId } = req.params;
@@ -99,11 +97,9 @@ export const updateTrip = async (req, res) => {
     const trip = await Trip.findById(id);
     if (!trip) return res.status(404).json({ message: "Trip not found" });
 
-    // Prevent changes if trip is done
     if (["done"].includes(trip.status))
       return res.status(400).json({ message: "Trip locked" });
 
-    // Prevent changing resources while active
     if (trip.status === "active" && (u.driverId || u.truckId || u.trailerId)) {
       return res.status(400).json({ message: "Cannot change resources while active" });
     }
@@ -111,11 +107,9 @@ export const updateTrip = async (req, res) => {
     const start = u.startDate ? new Date(u.startDate) : new Date(trip.startDate);
     const end = u.endDate ? new Date(u.endDate) : new Date(trip.endDate);
 
-    // Validate date range
     if ((u.startDate || u.endDate) && end <= start)
       return res.status(400).json({ message: "Invalid date range" });
 
-    // Check for resource conflicts
     if (u.startDate || u.endDate || u.driverId || u.truckId || u.trailerId) {
       const conflict = await Trip.findOne({
         _id: { $ne: id },
@@ -133,7 +127,6 @@ export const updateTrip = async (req, res) => {
         return res.status(409).json({ message: "Resource already booked" });
     }
 
-    // Activate trip only if current datetime is within start & end
     if (u.status === "active") {
       const now = new Date();
       if (now < start || now > end) {
@@ -146,7 +139,6 @@ export const updateTrip = async (req, res) => {
       );
     }
 
-    // Reset vehicles to available if trip completed or canceled
     if (trip.status === "active" && ["done", "canceled"].includes(u.status)) {
       await Vehicle.updateMany(
         { _id: { $in: [trip.truckId, trip.trailerId] } },
@@ -154,14 +146,12 @@ export const updateTrip = async (req, res) => {
       );
     }
 
-    // Update trip with new data
     Object.assign(trip, u);
     await trip.save();
 
     res.json({ status: "updated successfully", data: trip });
 
   } catch (err) {
-    console.error("Update Trip Error:", err.message);
     res.status(500).json({ message: err.message });
   }
 };

@@ -72,7 +72,6 @@ const FleetTable = ({
                   </div>
                 </td>
 
-                {/* Brand & Model */}
                 <td className="py-3 px-4">
                   <div>
                     <div className="text-text-light">{vehicle.brand || 'Unknown'}</div>
@@ -80,14 +79,12 @@ const FleetTable = ({
                   </div>
                 </td>
 
-                {/* Current KM */}
                 <td className="py-3 px-4">
                   <div className="text-text-light">
                     {formatNumber(vehicle.currentKm)} km
                   </div>
                 </td>
 
-                {/* Type */}
                 <td className="py-3 px-4">
                   <div className="flex items-center gap-2">
                     <TypeIcon className="h-4 w-4 text-accent" />
@@ -95,7 +92,6 @@ const FleetTable = ({
                   </div>
                 </td>
 
-                {/* Status */}
                 <td className="py-3 px-4">
                   <div className={`inline-flex items-center gap-1.5 ${getStatusColor(vehicle.status)}`}>
                     <div className={`h-2 w-2 rounded-full ${getStatusColor(vehicle.status).replace('text-', 'bg-')}`}></div>

@@ -125,7 +125,6 @@ const TripForm = ({
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Overlay */}
           <motion.div
             variants={overlayVariants}
             initial="hidden"
@@ -136,7 +135,6 @@ const TripForm = ({
             onClick={handleClose}
           />
           
-          {/* Form Modal */}
           <div className="fixed inset-0 flex items-center justify-center p-4 z-50">
             <motion.div
               variants={formVariants}
@@ -147,7 +145,6 @@ const TripForm = ({
               className="w-full max-w-lg bg-bg border border-secondary rounded-lg shadow-lg max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Header */}
               <div className="flex items-center justify-between p-4 border-b border-secondary sticky top-0 bg-bg z-10">
                 <h2 className="text-lg font-normal text-text-light">
                   {isEditMode ? 'Edit Trip' : title}
@@ -160,10 +157,8 @@ const TripForm = ({
                 </button>
               </div>
 
-              {/* Form */}
               <form onSubmit={handleSubmit(handleFormSubmit)} className="p-4">
                 <div className="space-y-4">
-                  {/* Driver Selection */}
                   <div>
                     <label className="block text-sm text-text mb-1">
                       Driver *
@@ -192,7 +187,6 @@ const TripForm = ({
                     )}
                   </div>
 
-                  {/* Vehicle Selection - Truck & Trailer Row */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-sm text-text mb-1">
@@ -247,7 +241,6 @@ const TripForm = ({
                     </div>
                   </div>
 
-                  {/* Locations */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-sm text-text mb-1 flex items-center">
@@ -290,7 +283,6 @@ const TripForm = ({
                     </div>
                   </div>
 
-                  {/* Dates */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-sm text-text mb-1 flex items-center">
@@ -337,7 +329,6 @@ const TripForm = ({
                     </div>
                   </div>
 
-                  {/* Status & Fuel */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-sm text-text mb-1">
@@ -389,7 +380,6 @@ const TripForm = ({
                     </div>
                   </div>
 
-                  {/* Remarks */}
                   <div>
                     <label className="block text-sm text-text mb-1 flex items-center">
                       <MessageSquare className="h-4 w-4 mr-1" />
@@ -404,7 +394,6 @@ const TripForm = ({
                   </div>
                 </div>
 
-                {/* Actions */}
                 <div className="flex gap-2 mt-6 pt-4 border-t border-secondary">
                   <Button
                     type="button"

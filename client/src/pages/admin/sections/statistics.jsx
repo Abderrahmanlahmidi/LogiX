@@ -204,15 +204,12 @@ export default function Statistics() {
 
   return (
     <div className="min-h-screen bg-bg p-6">
-      {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-text-light mb-2">Statistics Dashboard</h1>
         <p className="text-text">Comprehensive overview of your fleet operations</p>
       </div>
 
-      {/* Stats Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        {/* Total Vehicles */}
         <div className="bg-teal-900/10 border border-teal-800/30 rounded-lg p-6">
           <div className="flex items-center justify-between">
             <div>
@@ -231,7 +228,6 @@ export default function Statistics() {
           </div>
         </div>
 
-        {/* Active Trips */}
         <div className="bg-green-900/10 border border-green-800/30 rounded-lg p-6">
           <div className="flex items-center justify-between">
             <div>
@@ -250,7 +246,6 @@ export default function Statistics() {
           </div>
         </div>
 
-        {/* Total Fuel */}
         <div className="bg-blue-900/10 border border-blue-800/30 rounded-lg p-6">
           <div className="flex items-center justify-between">
             <div>
@@ -268,7 +263,6 @@ export default function Statistics() {
           </div>
         </div>
 
-        {/* Maintenance Rules */}
         <div className="bg-purple-900/10 border border-purple-800/30 rounded-lg p-6">
           <div className="flex items-center justify-between">
             <div>
@@ -287,9 +281,7 @@ export default function Statistics() {
         </div>
       </div>
 
-      {/* Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        {/* Vehicle Distribution */}
         <div className="bg-bg border border-secondary rounded-lg p-6">
           <div className="flex items-center justify-between mb-6">
             <div>
@@ -303,7 +295,6 @@ export default function Statistics() {
           </div>
         </div>
 
-        {/* Trip Status */}
         <div className="bg-bg border border-secondary rounded-lg p-6">
           <div className="flex items-center justify-between mb-6">
             <div>
@@ -317,7 +308,6 @@ export default function Statistics() {
           </div>
         </div>
 
-        {/* Maintenance Rules */}
         <div className="bg-bg border border-secondary rounded-lg p-6">
           <div className="flex items-center justify-between mb-6">
             <div>
@@ -331,7 +321,6 @@ export default function Statistics() {
           </div>
         </div>
 
-        {/* Fuel Consumption */}
         <div className="bg-bg border border-secondary rounded-lg p-6">
           <div className="flex items-center justify-between mb-6">
             <div>
@@ -346,9 +335,7 @@ export default function Statistics() {
         </div>
       </div>
 
-      {/* Detailed Stats */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Vehicle Details */}
         <div className="bg-bg border border-secondary rounded-lg p-6">
           <h3 className="text-lg font-semibold text-text-light mb-4 flex items-center gap-2">
             <Truck className="h-5 w-5 text-accent" />
@@ -376,7 +363,6 @@ export default function Statistics() {
           </div>
         </div>
 
-        {/* Trip Details */}
         <div className="bg-bg border border-secondary rounded-lg p-6">
           <h3 className="text-lg font-semibold text-text-light mb-4 flex items-center gap-2">
             <MapPin className="h-5 w-5 text-accent" />
@@ -406,7 +392,6 @@ export default function Statistics() {
           </div>
         </div>
 
-        {/* Maintenance Details */}
         <div className="bg-bg border border-secondary rounded-lg p-6">
           <h3 className="text-lg font-semibold text-text-light mb-4 flex items-center gap-2">
             <Wrench className="h-5 w-5 text-accent" />

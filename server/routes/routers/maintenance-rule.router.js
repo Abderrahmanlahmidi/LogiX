@@ -4,7 +4,6 @@ import { authMiddleware } from "../../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
-// CRUD Routes
 router.get(
   "/maintenance-rule/:id",
   authMiddleware,
@@ -13,12 +12,12 @@ router.get(
 
 router.get(
   "/maintenance-rules",
-  // authMiddleware,
+  authMiddleware,
   maintenanceRuleController.getAll
 );
 router.post(
   "/create-maintenance-rule",
-  // authMiddleware,
+  authMiddleware,
   maintenanceRuleController.create
 );
 router.delete(

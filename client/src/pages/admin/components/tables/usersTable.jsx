@@ -76,7 +76,6 @@ const UsersTable = ({
                 </div>
               </td>
 
-              {/* Email */}
               <td className="py-3 px-4">
                 <div className="flex items-center gap-2">
                   <Mail className="h-4 w-4 text-text/60" />
@@ -86,7 +85,6 @@ const UsersTable = ({
                 </div>
               </td>
 
-              {/* Phone */}
               <td className="py-3 px-4">
                 <div className="flex items-center gap-2">
                   <Phone className="h-4 w-4 text-text/60" />
@@ -96,7 +94,6 @@ const UsersTable = ({
                 </div>
               </td>
 
-              {/* Role */}
               <td className="py-3 px-4">
                 <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium capitalize ${getRoleBadge(user.roleId?.name)}`}>
                   <Shield className="h-3 w-3 mr-1.5" />

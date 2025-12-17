@@ -97,7 +97,6 @@ export default function Trip() {
 
       <TripStats trips={data?.data || []} />
 
-      {/* Trip Table */}
       <div className="px-6">
         <TripTable
           data={trips}

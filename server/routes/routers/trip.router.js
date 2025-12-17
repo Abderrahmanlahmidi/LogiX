@@ -8,7 +8,7 @@ const router = express.Router();
 // CRUD Routes
 router.get("/trip/:id", authMiddleware, tripController.getOne);
 router.get("/driver-trips/:driverId",
-    // authMiddleware,
+    authMiddleware,
     getTripsByDriver
     );
 

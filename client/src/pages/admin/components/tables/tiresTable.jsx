@@ -63,14 +63,12 @@ const TiresTable = ({
             
             return (
               <tr key={tire._id || tire.id} className="border-b border-secondary/30 hover:bg-bg-dark">
-                {/* Serial Number */}
                 <td className="py-3 px-4">
                   <div className="font-medium text-text-light">
                     {formatSerialNumber(tire.serialNumber)}
                   </div>
                 </td>
 
-                {/* Wear Level */}
                 <td className="py-3 px-4">
                   <div className={`inline-flex items-center gap-1.5 ${getWearLevelColor(tire.wearLevel)}`}>
                     <div className={`h-2 w-2 rounded-full ${getWearLevelColor(tire.wearLevel).replace('text-', 'bg-')}`}></div>
@@ -78,14 +76,12 @@ const TiresTable = ({
                   </div>
                 </td>
 
-                {/* Position */}
                 <td className="py-3 px-4">
                   <div className="text-text-light">
                     {tire.position || 'N/A'}
                   </div>
                 </td>
 
-                {/* Installed On */}
                 <td className="py-3 px-4">
                   <div className="flex items-center gap-2">
                     <InstalledOnIcon className="h-4 w-4 text-accent" />
@@ -95,7 +91,6 @@ const TiresTable = ({
 
               
 
-                {/* Actions */}
                 <td className="py-3 px-4">
                   <div className="flex gap-2">
                     <Button

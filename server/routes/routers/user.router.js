@@ -4,7 +4,7 @@ import {
   login,
   updateProfile,
   logout,
-    refreshToken
+  refreshToken
 } from "../../controllers/user.controller.js";
 import { userController } from "../../controllers/user.controller.js";
 import { changePassword } from "../../controllers/user.controller.js";
@@ -14,7 +14,6 @@ import {AuthService} from "../../services/user.service.js";
 
 const router = express.Router();
 
-// ------------------ AuthRoutes -------------------
 router.post("/register", register);
 router.post("/login", login);
 router.post("/change-password/:id", authMiddleware, changePassword);
@@ -22,7 +21,7 @@ router.put("/update-profile/:id" ,uploadProfile, updateProfile);
 router.post("/refresh", refreshToken);
 router.post("/logout", logout);
 
-// ------------------ CRUD --------------------------
+
 router.get(
   "/user/:id",
   (req, res, next) => {

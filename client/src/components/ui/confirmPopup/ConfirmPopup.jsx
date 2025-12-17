@@ -48,15 +48,12 @@ export const ConfirmPopup = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black/50"
         onClick={onClose}
       />
 
-      {/* Popup */}
       <div className="relative w-full max-w-md bg-bg rounded-lg border border-secondary shadow-lg">
-        {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-secondary">
           <div className="flex items-center gap-3">
             <div className={`p-2 rounded ${config.bgColor}`}>
@@ -72,12 +69,10 @@ export const ConfirmPopup = ({
           </button>
         </div>
 
-        {/* Message */}
         <div className="p-6">
           <p className="text-text">{message}</p>
         </div>
 
-        {/* Actions */}
         <div className="flex gap-3 p-4 border-t border-secondary">
           <button
             onClick={onClose}

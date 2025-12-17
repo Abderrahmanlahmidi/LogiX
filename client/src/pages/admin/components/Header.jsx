@@ -21,9 +21,7 @@ export default function Header({
   return (
     <div className="bg-bg border-b border-secondary p-4 md:p-6">
       <div className="max-w-7xl mx-auto">
-        {/* Top Row - Title & Actions */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-          {/* Left Side - Title, Subtitle & Back Button */}
           <div>
             <div className="flex items-center gap-3 mb-1">
               {showBackButton && (
@@ -40,7 +38,6 @@ export default function Header({
               </h1>
             </div>
             
-            {/* Subtitle */}
             {subtitle && (
               <p className="text-text text-sm ">
                 {subtitle}
@@ -48,7 +45,6 @@ export default function Header({
             )}
           </div>
 
-          {/* Right Side - Action Buttons */}
           <div className="flex flex-wrap gap-2">
             {showSearch && (
               <div className="relative">

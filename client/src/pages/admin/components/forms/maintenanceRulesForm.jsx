@@ -104,7 +104,6 @@ const MaintenanceRuleForm = ({
 
               <form onSubmit={handleSubmit(handleFormSubmit)} className="p-4">
                 <div className="space-y-4">
-                  {/* Type */}
                   <div>
                     <label className="block text-sm text-text mb-1">
                       Type *
@@ -126,7 +125,6 @@ const MaintenanceRuleForm = ({
                     )}
                   </div>
 
-                  {/* Recommended KM */}
                   <div>
                     <label className="block text-sm text-text mb-1">
                       Recommended KM *
@@ -146,7 +144,6 @@ const MaintenanceRuleForm = ({
                     )}
                   </div>
 
-                  {/* Recommended Months */}
                   <div>
                     <label className="block text-sm text-text mb-1">
                       Recommended Months
@@ -158,7 +155,6 @@ const MaintenanceRuleForm = ({
                     />
                   </div>
 
-                  {/* Description */}
                   <div>
                     <label className="block text-sm text-text mb-1">
                       Description
@@ -170,7 +166,6 @@ const MaintenanceRuleForm = ({
                     />
                   </div>
 
-                  {/* Active Status */}
                   <div>
                     <label className="flex items-center gap-2">
                       <input
