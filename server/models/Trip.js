@@ -17,6 +17,10 @@ const TripSchema = new mongoose.Schema({
         ref: "Vehicle",
         required: true
     },
+    distanceKm: {
+        type: Number,
+        required: true
+    },
     startLocation: String,
     endLocation: String,
     startDate: Date,

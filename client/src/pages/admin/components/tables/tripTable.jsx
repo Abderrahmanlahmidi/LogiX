@@ -1,4 +1,4 @@
-import { Edit2, Trash2, User, MapPin, Calendar, Truck } from 'lucide-react';
+import { Edit2, Trash2, User, MapPin, Calendar, Truck, Navigation } from 'lucide-react';
 import Button from '../../../../components/ui/buttons/Button';
 
 const TripTable = ({ 
@@ -8,20 +8,21 @@ const TripTable = ({
   isLoading = false
 }) => {
 
-const getStatusColor = (status) => {
-  switch (status) {
-    case 'active': 
-      return 'bg-green-500/10 text-green-500';
-    case 'done': 
-      return 'bg-blue-500/10 text-blue-500';
-    case 'pending': 
-      return 'bg-yellow-500/10 text-yellow-500';
-    case 'canceled': 
-      return 'bg-red-500/10 text-red-500';
-    default: 
-      return 'bg-gray-500/10 text-gray-500';
-  }
-};
+  const getStatusColor = (status) => {
+    switch (status) {
+      case 'active': 
+        return 'bg-green-500/10 text-green-500';
+      case 'done': 
+        return 'bg-blue-500/10 text-blue-500';
+      case 'pending': 
+        return 'bg-yellow-500/10 text-yellow-500';
+      case 'canceled': 
+        return 'bg-red-500/10 text-red-500';
+      default: 
+        return 'bg-gray-500/10 text-gray-500';
+    }
+  };
+
   const formatDate = (dateString) => {
     if (!dateString) return 'N/A';
     const date = new Date(dateString);
@@ -34,6 +35,11 @@ const getStatusColor = (status) => {
   const formatRoute = (start, end) => {
     if (!start && !end) return 'N/A';
     return `${start || '?'} → ${end || '?'}`;
+  };
+
+  const formatDistance = (distance) => {
+    if (!distance && distance !== 0) return 'N/A';
+    return `${distance.toLocaleString()} km`;
   };
 
   if (isLoading) {
@@ -61,6 +67,7 @@ const getStatusColor = (status) => {
           <tr className="border-b border-secondary">
             <th className="text-left py-3 px-4 text-sm font-normal text-text-light">Driver</th>
             <th className="text-left py-3 px-4 text-sm font-normal text-text-light">Route</th>
+            <th className="text-left py-3 px-4 text-sm font-normal text-text-light">Distance</th>
             <th className="text-left py-3 px-4 text-sm font-normal text-text-light">Date</th>
             <th className="text-left py-3 px-4 text-sm font-normal text-text-light">Vehicle</th>
             <th className="text-left py-3 px-4 text-sm font-normal text-text-light">Status</th>
@@ -71,6 +78,7 @@ const getStatusColor = (status) => {
           {data.map((trip) => (
             <tr key={trip._id} className="border-b border-secondary/30 hover:bg-bg-dark transition-colors">
               
+              {/* Driver Column */}
               <td className="py-3 px-4">
                 <div className="flex items-center gap-2">
                   <User className="h-4 w-4 text-text/60" />
@@ -85,15 +93,34 @@ const getStatusColor = (status) => {
                 </div>
               </td>
 
+              {/* Route Column */}
               <td className="py-3 px-4">
                 <div className="flex items-center gap-2">
                   <MapPin className="h-4 w-4 text-text/60 flex-shrink-0" />
-                  <div className="text-sm text-text-light truncate max-w-[200px]" title={`${trip.startLocation} → ${trip.endLocation}`}>
+                  <div className="text-sm text-text-light truncate max-w-[180px]" title={`${trip.startLocation} → ${trip.endLocation}`}>
                     {formatRoute(trip.startLocation, trip.endLocation)}
                   </div>
                 </div>
               </td>
 
+              {/* ADDED: Distance Column */}
+              <td className="py-3 px-4">
+                <div className="flex items-center gap-2">
+                  <Navigation className="h-4 w-4 text-text/60 flex-shrink-0" />
+                  <div className="text-sm">
+                    <div className="text-text-light font-medium">
+                      {formatDistance(trip.distanceKm)}
+                    </div>
+                    {trip.fuelLiters && trip.distanceKm && (
+                      <div className="text-xs text-text">
+                        {((trip.fuelLiters / trip.distanceKm) * 100).toFixed(2)} L/100km
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </td>
+
+              {/* Date Column */}
               <td className="py-3 px-4">
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4 text-text/60" />
@@ -103,6 +130,7 @@ const getStatusColor = (status) => {
                 </div>
               </td>
 
+              {/* Vehicle Column */}
               <td className="py-3 px-4">
                 <div className="flex items-center gap-2">
                   <Truck className="h-4 w-4 text-text/60" />
@@ -111,18 +139,20 @@ const getStatusColor = (status) => {
                       {trip.truckId?.plateNumber}
                     </div>
                     <div className="text-xs text-text">
-                      + Trailer: {trip.trailerId?.plateNumber}
+                      + {trip.trailerId?.plateNumber || 'No Trailer'}
                     </div>
                   </div>
                 </div>
               </td>
 
+              {/* Status Column */}
               <td className="py-3 px-4">
                 <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium capitalize ${getStatusColor(trip.status)}`}>
                   {trip.status}
                 </span>
               </td>
 
+              {/* Actions Column */}
               <td className="py-3 px-4">
                 <div className="flex gap-2">
                   <Button

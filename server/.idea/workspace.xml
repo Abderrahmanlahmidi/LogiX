@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="97d7aa10-ac83-461f-b4e8-65ac04fdb610" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/trip.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/trip.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Trip.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Trip.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +56,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;database.data.extractors.current.export.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
     &quot;database.data.extractors.current.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/tests&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/fix&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Youcode&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
