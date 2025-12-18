@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97d7aa10-ac83-461f-b4e8-65ac04fdb610" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2162e89d-5a31-47d1-8c57-683aacac713a.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/trip.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/trip.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Trip.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Trip.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/routers/user.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routers/user.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/user.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/intergration/trip.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/trip.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -27,7 +27,6 @@ export const LoginForm = ({
   return (
     <div className="w-full lg:w-1/2 flex items-center justify-center p-6 bg-bg">
       <div className="w-full max-w-sm">
-        {/* Mobile Logo */}
         <div className="lg:hidden text-center mb-8">
           <div className="flex justify-center items-center gap-2 mb-3">
             <Truck className="h-8 w-8 text-accent" />

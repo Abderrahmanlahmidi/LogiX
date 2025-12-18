@@ -5,13 +5,13 @@ export const userInfo = async (id) => {
   return res.data;
 };
 
-
 export const updateProfile = async (id, data) => {
   const res = await api.put(`/update-profile/${id}`, data);
   return res.data;
 };
 
 export const changePassword = async (id, data) => {
+  console.log(data)
   const res = await api.put(`/change-password/${id}`, data);
   return res.data;
 };

@@ -43,6 +43,9 @@ export const login = async (req, res) => {
 
 
 export const changePassword = async (req, res) => {
+
+  console.log(req.params.id);
+  
   try {
     await AuthService.changePassword(req.params.id, req.body);
 
@@ -84,7 +87,6 @@ export const logout = (req, res) => {
 
 export const refreshToken = (req, res) => {
     const refreshToken = req.cookies.refreshToken;
-
 
     if (!refreshToken) return res.status(401).json({ message: "No refresh token" });
 

@@ -4,12 +4,7 @@ import { withSuspense } from "./lazyRoutes";
 import GuestOnlyRoute from "../guards/GuestOnlyRoutes";
 import ProtectedRoute from "../guards/RoleProtectedRoutes";
 
-import {
-  Home,
-  Login,
-  Register,
-  Dashboard
-} from "./lazyRoutes";
+import { Home, Login, Register, Dashboard, Profile } from "./lazyRoutes";
 
 import Fleet from "../pages/admin/sections/fleet";
 import Users from "../pages/admin/sections/users";
@@ -19,13 +14,10 @@ import Trip from "../pages/admin/sections/trip";
 import MaintenanceRule from "../pages/admin/sections/maintenanceRule";
 import Statistics from "../pages/admin/sections/statistics";
 
-
 import Unauthorized from "../pages/private/unauthorized";
 import NotFound from "../pages/private/notFound";
 
-
 export const router = createBrowserRouter([
-
   {
     path: "/",
     element: withSuspense(<Home />),
@@ -35,8 +27,17 @@ export const router = createBrowserRouter([
     element: withSuspense(<Unauthorized />),
   },
   {
-    path:"*",
+    path: "*",
     element: withSuspense(<NotFound />),
+  },
+  {
+    element: <ProtectedRoute roles={["Admin", "Driver"]} />,
+    children: [
+      {
+        path: "/profile",
+        element: withSuspense(<Profile />),
+      },
+    ],
   },
 
   {
@@ -52,7 +53,6 @@ export const router = createBrowserRouter([
       },
     ],
   },
-
 
   {
     element: <ProtectedRoute roles={["Admin", "Driver"]} />,
@@ -83,19 +83,19 @@ export const router = createBrowserRouter([
               },
               {
                 path: "trips",
-                element: withSuspense(<Trip />)
+                element: withSuspense(<Trip />),
               },
               {
                 path: "statistics",
-                element: withSuspense(<Statistics />)
-              }
+                element: withSuspense(<Statistics />),
+              },
             ],
           },
-          
+
           {
             element: <ProtectedRoute roles={["Driver"]} />,
             children: [
-               {
+              {
                 path: "tracking",
                 element: withSuspense(<Tracking />),
               },

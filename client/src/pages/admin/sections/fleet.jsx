@@ -21,6 +21,7 @@ export default function Fleet() {
     queryFn: vehicleApi.getVehicles,
   });
 
+
   const vehicles = useSearch(data?.data, search, {
     keys: ["brand", "model", "plateNumber", "status"],
   });

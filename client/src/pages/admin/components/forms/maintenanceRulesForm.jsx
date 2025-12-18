@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import Button from '../../../../components/ui/buttons/Button';
 
+
 const MaintenanceRuleForm = ({
   isOpen = false,
   onClose = () => {},
@@ -103,101 +104,144 @@ const MaintenanceRuleForm = ({
               </div>
 
               <form onSubmit={handleSubmit(handleFormSubmit)} className="p-4">
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm text-text mb-1">
-                      Type *
-                    </label>
-                    <select
-                      {...register('type', { required: 'Type is required' })}
-                      className="w-full px-3 py-2 bg-bg border border-secondary rounded text-text-light text-sm focus:outline-none focus:border-accent"
-                    >
-                      <option value="">Select type</option>
-                      <option value="oil">Oil Change</option>
-                      <option value="filter">Filter Replacement</option>
-                      <option value="tire">Tire Maintenance</option>
-                      <option value="brake">Brake Service</option>
-                    </select>
-                    {errors.type && (
-                      <p className="mt-1 text-xs text-error">
-                        {errors.type.message}
-                      </p>
-                    )}
-                  </div>
+  <div className="space-y-4">
+    <div>
+      <label className="block text-sm text-text-light mb-1">
+        Type *
+      </label>
+      <select
+        {...register('type', { required: 'Type is required' })}
+        className="w-full px-3 py-2 bg-bg border border-secondary rounded text-text-light text-sm focus:outline-none focus:border-accent"
+      >
+      <option value="">Choose a maintenance type...</option>
+        <option value="oil" className="flex items-center gap-2">
+          Oil Change
+        </option>
+        <option value="filter" className="flex items-center gap-2">
+          Filter Replacement
+        </option>
+        <option value="tire" className="flex items-center gap-2">
+          Tire Maintenance
+        </option>
+        <option value="brake" className="flex items-center gap-2">
+          Brake Service
+        </option>
+        <option value="battery" className="flex items-center gap-2">
+          Battery Check
+        </option>
+        <option value="coolant" className="flex items-center gap-2">
+          Coolant System
+        </option>
+      </select>
+      {errors.type && (
+        <p className="mt-1 text-xs text-error">
+          {errors.type.message}
+        </p>
+      )}
+      <p className="mt-1 text-xs text-text/60">
+        Select the type of maintenance this rule applies to
+      </p>
+    </div>
 
-                  <div>
-                    <label className="block text-sm text-text mb-1">
-                      Recommended KM *
-                    </label>
-                    <input
-                      type="number"
-                      {...register('recommendedKm', {
-                        required: 'Recommended KM is required',
-                        min: { value: 1000, message: 'Minimum 1000 km' }
-                      })}
-                      className="w-full px-3 py-2 bg-bg border border-secondary rounded text-text-light text-sm focus:outline-none focus:border-accent"
-                    />
-                    {errors.recommendedKm && (
-                      <p className="mt-1 text-xs text-error">
-                        {errors.recommendedKm.message}
-                      </p>
-                    )}
-                  </div>
+    <div className="grid grid-cols-2 gap-4">
+      <div>
+        <label className="block text-sm text-text-light mb-1">
+          Recommended KM *
+        </label>
+        <input
+          type="number"
+          {...register('recommendedKm', {
+            required: 'Recommended KM is required',
+            min: { value: 1000, message: 'Minimum 1000 km' }
+          })}
+          placeholder="10000"
+          className="w-full px-3 py-2 bg-bg border border-secondary rounded text-text-light text-sm focus:outline-none focus:border-accent placeholder-text/50"
+          step="1000"
+        />
+        {errors.recommendedKm && (
+          <p className="mt-1 text-xs text-error">
+            {errors.recommendedKm.message}
+          </p>
+        )}
+        <p className="mt-1 text-xs text-text/60">
+          Distance interval
+        </p>
+      </div>
 
-                  <div>
-                    <label className="block text-sm text-text mb-1">
-                      Recommended Months
-                    </label>
-                    <input
-                      type="number"
-                      {...register('recommendedMonths')}
-                      className="w-full px-3 py-2 bg-bg border border-secondary rounded text-text-light text-sm focus:outline-none focus:border-accent"
-                    />
-                  </div>
+      <div>
+        <label className="block text-sm text-text-light mb-1">
+          Recommended Months *
+        </label>
+        <input
+          type="number"
+          {...register('recommendedMonths', {
+            min: { value: 1, message: 'Minimum 1 month' }
+          })}
+          placeholder="6"
+          className="w-full px-3 py-2 bg-bg border border-secondary rounded text-text-light text-sm focus:outline-none focus:border-accent placeholder-text/50"
+        />
+        <p className="mt-1 text-xs text-text/60">
+          Time interval
+        </p>
+      </div>
+    </div>
 
-                  <div>
-                    <label className="block text-sm text-text mb-1">
-                      Description
-                    </label>
-                    <textarea
-                      {...register('description')}
-                      rows="2"
-                      className="w-full px-3 py-2 bg-bg border border-secondary rounded text-text-light text-sm focus:outline-none focus:border-accent resize-none"
-                    />
-                  </div>
+    <div>
+      <label className="block text-sm text-text-light mb-1">
+        Description
+      </label>
+      <textarea
+        {...register('description')}
+        rows="3"
+        placeholder="Enter detailed instructions for this maintenance task. Include any special tools, materials, or safety precautions needed..."
+        className="w-full px-3 py-2 bg-bg border border-secondary rounded text-text-light text-sm focus:outline-none focus:border-accent placeholder-text/50 resize-none"
+      />
+      <p className="mt-1 text-xs text-text/60">
+        This helps mechanics understand exactly what needs to be done
+      </p>
+    </div>
 
-                  <div>
-                    <label className="flex items-center gap-2">
-                      <input
-                        type="checkbox"
-                        {...register('isActive')}
-                        className="h-4 w-4 accent-accent"
-                      />
-                      <span className="text-sm text-text-light">Active Rule</span>
-                    </label>
-                  </div>
-                </div>
+    <div className="flex items-start gap-3 p-3 bg-bg-dark/30 border border-secondary/50 rounded-lg">
+      <div className="mt-0.5">
+        <input
+          type="checkbox"
+          id="isActive"
+          {...register('isActive')}
+          className="h-4 w-4 accent-accent"
+          defaultChecked={true}
+        />
+      </div>
+      <div>
+        <label htmlFor="isActive" className="text-sm text-text-light cursor-pointer">
+          Enable this maintenance rule
+        </label>
+        <p className="text-xs text-text/60 mt-0.5">
+          When enabled, vehicles will be scheduled for this maintenance based on the intervals above
+        </p>
+      </div>
+    </div>
+  </div>
 
-                <div className="flex gap-2 mt-6 pt-4 border-t border-secondary">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    fullWidth
-                    onClick={handleClose}
-                  >
-                    Cancel
-                  </Button>
-                  
-                  <Button
-                    type="submit"
-                    variant="accent"
-                    fullWidth
-                    loading={isLoading}
-                  >
-                    {isEditMode ? 'Update Rule' : 'Create Rule'}
-                  </Button>
-                </div>
-              </form>
+  <div className="flex gap-2 mt-6 pt-4 border-t border-secondary">
+    <Button
+      type="button"
+      variant="outline"
+      fullWidth
+      onClick={handleClose}
+    >
+      Cancel
+    </Button>
+    
+    <Button
+      type="submit"
+      variant="accent"
+      fullWidth
+      loading={isLoading}
+    >
+      {isEditMode ? 'Update Rule' : 'Create Rule'}
+    </Button>
+  </div>
+</form>
             </motion.div>
           </div>
         </>

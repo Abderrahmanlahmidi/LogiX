@@ -10,16 +10,15 @@ import { userController } from "../../controllers/user.controller.js";
 import { changePassword } from "../../controllers/user.controller.js";
 import { uploadProfile } from "../../utils/uploadMiddleware.js";
 import { authMiddleware } from "../../middlewares/auth.middleware.js";
-import {AuthService} from "../../services/user.service.js";
 
 const router = express.Router();
 
 router.post("/register", register);
 router.post("/login", login);
-router.post("/change-password/:id", authMiddleware, changePassword);
-router.put("/update-profile/:id" ,uploadProfile, updateProfile);
+router.put("/change-password/:id", authMiddleware ,changePassword);
+router.put("/update-profile/:id", authMiddleware ,uploadProfile, updateProfile);
 router.post("/refresh", refreshToken);
-router.post("/logout", logout);
+router.post("/logout", authMiddleware ,logout);
 
 
 router.get(
