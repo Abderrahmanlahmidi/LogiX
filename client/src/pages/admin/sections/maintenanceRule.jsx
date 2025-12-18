@@ -14,16 +14,18 @@ import {
   XCircle,
   Calendar,
   TrendingUp,
-  FileText
+  FileText,
 } from "lucide-react";
 import { maintenanceRulesApi } from "../../../services/apis/admin/maintenanceRulesApi";
 import MaintenanceRuleForm from "../components/forms/maintenanceRulesForm";
 import { ConfirmPopup } from "../../../components/ui/confirmPopup/ConfirmPopup";
 import Button from "../../../components/ui/buttons/Button";
+import { useToast } from "../../../components/ui/toast/Toast";
 
 const MaintenanceRule = () => {
   const queryClient = useQueryClient();
   const role = useSelector((state) => state.auth.user.role);
+  const { toast } = useToast();
 
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [isUpdateOpen, setIsUpdateOpen] = useState(false);
@@ -38,8 +40,10 @@ const MaintenanceRule = () => {
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["maintenance-rules"],
     queryFn: maintenanceRulesApi.getMaintenanceRules,
+    onError: (error) => {
+      toast.error(`Failed to load maintenance rules: ${error.message}`);
+    },
   });
-
 
   const rules = data?.data || [];
 
@@ -49,6 +53,14 @@ const MaintenanceRule = () => {
       queryClient.invalidateQueries(["maintenance-rules"]);
       setIsCreateOpen(false);
       refetch();
+      toast.success("Maintenance rule created successfully!");
+    },
+    onError: (error) => {
+      const errorMessage =
+        error.response?.data?.message ||
+        error.message ||
+        "Failed to create maintenance rule";
+      toast.error(errorMessage);
     },
   });
 
@@ -59,6 +71,14 @@ const MaintenanceRule = () => {
       queryClient.invalidateQueries(["maintenance-rules"]);
       setSelectedRule(null);
       setIsUpdateOpen(false);
+      toast.success("Maintenance rule updated successfully!");
+    },
+    onError: (error) => {
+      const errorMessage =
+        error.response?.data?.message ||
+        error.message ||
+        "Failed to update maintenance rule";
+      toast.error(errorMessage);
     },
   });
 
@@ -67,6 +87,14 @@ const MaintenanceRule = () => {
     onSuccess: () => {
       queryClient.invalidateQueries(["maintenance-rules"]);
       setDeleteConfirm({ show: false, ruleId: null });
+      toast.success("Maintenance rule deleted successfully!");
+    },
+    onError: (error) => {
+      const errorMessage =
+        error.response?.data?.message ||
+        error.message ||
+        "Failed to delete maintenance rule";
+      toast.error(errorMessage);
     },
   });
 

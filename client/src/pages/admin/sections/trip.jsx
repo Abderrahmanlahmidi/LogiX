@@ -7,9 +7,11 @@ import { useSearch } from "../../../hooks/useSearch";
 import { ConfirmPopup } from "../../../components/ui/confirmPopup/ConfirmPopup";
 import TripTable from "../components/tables/tripTable";
 import TripStats from "../components/tripStats";
+import { useToast } from "../../../components/ui/toast/Toast";
 
 export default function Trip() {
   const queryClient = useQueryClient();
+  const { toast } = useToast();
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedTrip, setSelectedTrip] = useState(null);
@@ -19,6 +21,9 @@ export default function Trip() {
   const { data, isLoading } = useQuery({
     queryKey: ["trips"],
     queryFn: tripApi.getTrips,
+    onError: (error) => {
+      toast.error(`Failed to load trips: ${error.message}`);
+    },
   });
 
   const trips = useSearch(data?.data, search, {
@@ -30,6 +35,11 @@ export default function Trip() {
     onSuccess: () => {
       queryClient.invalidateQueries(["trips"]);
       setIsOpen(false);
+      toast.success("Trip created successfully!");
+    },
+    onError: (error) => {
+      const errorMessage = error.response?.data?.message || error.message || "Failed to create trip";
+      toast.error(errorMessage);
     },
   });
 
@@ -39,6 +49,11 @@ export default function Trip() {
       queryClient.invalidateQueries(["trips"]);
       setSelectedTrip(null);
       setIsOpen(false);
+      toast.success("Trip updated successfully!");
+    },
+    onError: (error) => {
+      const errorMessage = error.response?.data?.message || error.message || "Failed to update trip";
+      toast.error(errorMessage);
     },
   });
 
@@ -47,6 +62,11 @@ export default function Trip() {
     onSuccess: () => {
       queryClient.invalidateQueries(["trips"]);
       setDeleteConfirm({ show: false, tripId: null });
+      toast.success("Trip deleted successfully!");
+    },
+    onError: (error) => {
+      const errorMessage = error.response?.data?.message || error.message || "Failed to delete trip";
+      toast.error(errorMessage);
     },
   });
 

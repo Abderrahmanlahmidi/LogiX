@@ -72,11 +72,12 @@ describe("Trip Routes", () => {
         endDate: new Date(Date.now() + 86400000),
         status: "pending",
         fuelLiters: 200,
+        distanceKm:120,
         remarks: "Long distance trip",
       });
 
     expect(res.status).to.be.oneOf([200, 201]);
-    expect(res.body.status).to.equal("create successfully");
+    expect(res.body.status).to.equal("created successfully");
     expect(res.body.data).to.exist;
     expect(res.body.data.startLocation).to.equal("Paris");
 
@@ -136,6 +137,7 @@ describe("Trip Routes", () => {
       endDate: new Date(Date.now() + 86400000),
       status: "pending",
       fuelLiters: 200,
+      distanceKm:120,
       remarks: "Long distance trip",
     });
 

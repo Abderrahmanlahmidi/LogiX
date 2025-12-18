@@ -76,18 +76,16 @@ async login(data) {
   },
 
   async updateProfile(id, data, filePath) {
+    
     const user = await Model.User.findById(id);
 
     if (!user) {
       throw new Error("User not found");
     }
-
-    // Update profile fields
     if (data.firstName) user.firstName = data.firstName;
     if (data.lastName) user.lastName = data.lastName;
     if (data.phone) user.phone = data.phone;
 
-    // Update profile image if provided
     if (filePath) {
       user.profile = filePath;
     }

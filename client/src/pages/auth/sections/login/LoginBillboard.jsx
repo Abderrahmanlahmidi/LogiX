@@ -21,7 +21,6 @@ export const LoginBillboard = () => {
       
       <div className="relative z-10 p-12 w-full flex flex-col justify-center">
         <div className="max-w-lg">
-          {/* Logo on Billboard */}
           <div className="flex items-center gap-2 mb-8">
             <Truck className="h-8 w-8 text-accent" />
             <span className="text-2xl font-normal text-text-light">Logix</span>
@@ -36,7 +35,6 @@ export const LoginBillboard = () => {
             for modern truck fleets. Reduce costs and enhance safety.
           </p>
 
-          {/* Features */}
           <div className="space-y-4">
             {features.map((feature, index) => (
               <div key={index} className="flex items-center gap-3">
@@ -46,7 +44,6 @@ export const LoginBillboard = () => {
             ))}
           </div>
 
-          {/* Stats */}
           <div className="grid grid-cols-3 gap-6 mt-12">
             {[
               { value: '30%', label: 'Cost Reduction' },

@@ -5,11 +5,9 @@ import { router } from "./routes/router";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { StorageLoading } from "./constants/StorageLoading";
-
-
+import { ToastProvider } from "./components/ui/toast/Toast";
 
 const queryClient = new QueryClient();
-
 
 
 function App() {
@@ -17,7 +15,9 @@ function App() {
     <Provider store={store}>
       <StorageLoading/>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
+        <ToastProvider>
+          <RouterProvider router={router} />
+        </ToastProvider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </Provider>

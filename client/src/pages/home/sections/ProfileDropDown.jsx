@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { User, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import { userInfo } from "../../../services/apis/user";
@@ -15,7 +14,6 @@ export default function ProfileDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
-  const navigate = useNavigate();
   const id = useSelector((state) => state.auth.user?.userId);
   const dispatch = useDispatch();
 
