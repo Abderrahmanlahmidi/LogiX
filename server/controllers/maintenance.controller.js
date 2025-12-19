@@ -56,6 +56,23 @@ export const updateMaintenance = async (req, res) => {
     if (!maintenance)
       return res.status(404).json({ message: "Maintenance not found" });
 
+    if (status === "in_progress") {
+      const activeTrip = await Trip.findOne({
+        status: "active",
+        $or: [
+          { truckId: maintenance.vehicleId },
+          { trailerId: maintenance.vehicleId }
+        ]
+      }); 
+
+      if (activeTrip) {
+        return res.status(400).json({
+          message:
+            "Cannot start maintenance while vehicle is assigned to an active trip"
+        });
+      }
+    }
+
     maintenance.status = status;
     await maintenance.save();
 
@@ -77,15 +94,12 @@ export const updateMaintenance = async (req, res) => {
         ]
       });
 
-      if (activeTrip) {
-        await Vehicle.findByIdAndUpdate(maintenance.vehicleId, {
-          status: "active"
-        });
-      } else {
-        await Vehicle.findByIdAndUpdate(maintenance.vehicleId, {
-          status: "inactive"
-        });
-      }
+      await Vehicle.findByIdAndUpdate(
+        maintenance.vehicleId,
+        {
+          status: activeTrip ? "active" : "inactive"
+        }
+      );
     }
 
     res.json({
