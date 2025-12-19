@@ -13,9 +13,13 @@ import Tracking from "../pages/admin/sections/tracking";
 import Trip from "../pages/admin/sections/trip";
 import MaintenanceRule from "../pages/admin/sections/maintenanceRule";
 import Statistics from "../pages/admin/sections/statistics";
+import Maintenance from "../pages/admin/sections/maintenance";
+
+
 
 import Unauthorized from "../pages/private/unauthorized";
 import NotFound from "../pages/private/notFound";
+
 
 export const router = createBrowserRouter([
   {
@@ -88,6 +92,10 @@ export const router = createBrowserRouter([
               {
                 path: "statistics",
                 element: withSuspense(<Statistics />),
+              },
+              {
+                path: "maintenance",
+                element: withSuspense(<Maintenance />),
               },
             ],
           },

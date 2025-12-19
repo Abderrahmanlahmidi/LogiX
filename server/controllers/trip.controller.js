@@ -50,7 +50,7 @@ export const createTrip = async (req, res) => {
       !trailerId ||
       !startDate ||
       !endDate ||
-      !distanceKm
+      distanceKm == null
     ) {
       return res.status(400).json({ message: "Missing required fields" });
     }
@@ -60,6 +60,7 @@ export const createTrip = async (req, res) => {
         .status(400)
         .json({ message: "End date must be after start date" });
     }
+
 
     const conflicts = await Trip.find({
       status: { $ne: "canceled" },
@@ -82,7 +83,7 @@ export const createTrip = async (req, res) => {
       endLocation,
       startDate,
       endDate,
-      status,
+      status, 
       fuelLiters,
       remarks,
       distanceKm,
@@ -103,16 +104,21 @@ export const updateTrip = async (req, res) => {
     const u = req.body;
 
     const trip = await Trip.findById(id);
-    if (!trip) return res.status(404).json({ message: "Trip not found" });
+    if (!trip)
+      return res.status(404).json({ message: "Trip not found" });
+
 
     if (trip.status === "done")
       return res.status(400).json({ message: "Trip locked" });
 
+
     if (
       trip.status === "active" &&
-      ((u.driverId && u.driverId.toString() !== trip.driverId.toString()) ||
+      (
+        (u.driverId && u.driverId.toString() !== trip.driverId.toString()) ||
         (u.truckId && u.truckId.toString() !== trip.truckId.toString()) ||
-        (u.trailerId && u.trailerId.toString() !== trip.trailerId.toString()))
+        (u.trailerId && u.trailerId.toString() !== trip.trailerId.toString())
+      )
     ) {
       return res.status(400).json({
         message: "Cannot change driver, truck or trailer while trip is active",
@@ -122,16 +128,38 @@ export const updateTrip = async (req, res) => {
     const start = u.startDate
       ? new Date(u.startDate)
       : new Date(trip.startDate);
-    const end = u.endDate ? new Date(u.endDate) : new Date(trip.endDate);
 
-    if ((u.startDate || u.endDate) && end <= start)
+    const end = u.endDate
+      ? new Date(u.endDate)
+      : new Date(trip.endDate);
+
+    if ((u.startDate || u.endDate) && end <= start) {
       return res.status(400).json({ message: "Invalid date range" });
+    }
 
     if (trip.status !== "active" && u.status === "active") {
       const now = new Date();
       if (now < start || now > end) {
-        return res.status(400).json({ message: "Invalid activation time" });
+        return res.status(400).json({
+          message: "Invalid activation time",
+        });
       }
+
+      const vehicles = await Vehicle.find({
+        _id: { $in: [trip.truckId, trip.trailerId] },
+      });
+
+      const hasMaintenance = vehicles.some(
+        (v) => v.status === "maintenance"
+      );
+
+      if (hasMaintenance) {
+        return res.status(400).json({
+          message:
+            "Cannot activate trip while vehicle is under maintenance",
+        });
+      }
+
 
       await Vehicle.updateMany(
         { _id: { $in: [trip.truckId, trip.trailerId] } },
@@ -144,7 +172,7 @@ export const updateTrip = async (req, res) => {
 
     if (
       trip.status === "active" &&
-      u.distanceKm !== undefined &&
+      u.distanceKm != null &&
       u.distanceKm !== trip.distanceKm
     ) {
       const diff = u.distanceKm - trip.distanceKm;
@@ -155,7 +183,11 @@ export const updateTrip = async (req, res) => {
       );
     }
 
-    if (trip.status === "active" && ["done", "canceled"].includes(u.status)) {
+
+    if (
+      trip.status === "active" &&
+      ["done", "canceled"].includes(u.status)
+    ) {
       await Vehicle.updateMany(
         { _id: { $in: [trip.truckId, trip.trailerId] } },
         { status: "inactive" }
@@ -165,10 +197,14 @@ export const updateTrip = async (req, res) => {
     Object.assign(trip, u);
     await trip.save();
 
-    res.json({ status: "updated successfully", data: trip });
+    res.json({
+      status: "updated successfully",
+      data: trip,
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
+
 
 export default GenericController(tripService);

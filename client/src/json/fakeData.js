@@ -285,4 +285,36 @@
     "status": "active",
     "type": "trailer"
   }
+],
+
+// Maintenance
+[
+  {
+  "targetType": "tire",
+  "component": "front_tires",
+  "status": "canceled",
+  "description": "Front tires replacement postponed",
+  "cost": 0,
+  "date": "2025-03-01T08:00:00.000Z",
+  "kmAtMaintenance": 102000
+},
+{
+  "targetType": "brake",
+  "component": "brake_pads",
+  "status": "done",
+  "description": "Front brake pads replacement",
+  "cost": 650,
+  "date": "2025-01-22T14:15:00.000Z",
+  "kmAtMaintenance": 78000
+},
+{
+  "targetType": "engine",
+  "component": "air_filter",
+  "status": "in_progress",
+  "description": "Air filter cleaning and replacement",
+  "cost": 180,
+  "date": "2025-02-05T09:00:00.000Z",
+  "kmAtMaintenance": 92000
+}
+
 ]
