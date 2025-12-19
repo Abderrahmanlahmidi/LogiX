@@ -3,9 +3,11 @@ import {
   MapPin,
   Wrench,
   Box,
-  Users,
+  Users,  
   Route,
   PieChart,
+  SettingsIcon,
+  Book
 } from "lucide-react";
 
 export const SIDEBAR_ITEMS = {
@@ -13,12 +15,17 @@ export const SIDEBAR_ITEMS = {
     {
       name: "Maintenance Rules",
       path: "/dashboard",
-      icon: Wrench,
+      icon: Book,
     },
     {
       name: "Statistics",
       path: "/dashboard/statistics",
       icon: PieChart,
+    },
+    {
+      name: "Maintenance",
+      path: "/dashboard/maintenance",
+      icon: SettingsIcon,
     },
     {
       name: "Users",
